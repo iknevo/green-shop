@@ -1,0 +1,39 @@
+@reference "tailwindcss/theme";
+
+.nav {
+  &__list {
+    @apply flex gap-16;
+
+    & a {
+      @apply relative;
+      transition: all 0.2s linear;
+
+      &.active {
+        font-weight: 700;
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        border-radius: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -18px;
+        background-color: var(--color-primary);
+        transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      }
+
+      &:hover {
+        color: black;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
