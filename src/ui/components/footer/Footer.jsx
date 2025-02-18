@@ -1,10 +1,12 @@
-import image1 from "./icons/footer-image-1.svg";
-import image2 from "./icons/footer-image-2.svg";
-import image3 from "./icons/footer-image-3.svg";
-import PayPal from "./icons/PayPal-logo.svg";
-import Visa from "./icons/visa-logo.svg";
-import Amex from "./icons/amex-logo.svg";
-import MasterCard from "./icons/mastercard-logo.svg";
+import {
+  Visa,
+  Amex,
+  MasterCard,
+  PayPal,
+  firstPlant,
+  secondPlant,
+  thirdPlant,
+} from "./icons";
 import "./Footer.scss";
 import Button from "../../buttons/Button";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
@@ -19,7 +21,7 @@ export default function Footer() {
         <div className="row">
           <div className="row__boxes">
             <div className="row__box">
-              <img className="" src={image1} alt="" />
+              <img className="" src={firstPlant} alt="" />
               <h2>Garden Care</h2>
               <p>
                 We are an online plant shop offering a wide range of cheap and
@@ -27,7 +29,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="row__box">
-              <img className="" src={image2} alt="" />
+              <img className="" src={secondPlant} alt="" />
               <h2>Garden Care</h2>
               <p>
                 We are an online plant shop offering a wide range of cheap and
@@ -35,7 +37,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="row__box">
-              <img className="" src={image3} alt="" />
+              <img className="" src={thirdPlant} alt="" />
               <h2>Garden Care</h2>
               <p>
                 We are an online plant shop offering a wide range of cheap and
