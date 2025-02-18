@@ -1,17 +1,14 @@
-@reference "tailwindcss/theme";
+@reference './../../../main.scss';
 
 .nav {
   &__list {
     @apply flex gap-16;
-
     & a {
-      @apply relative;
-      transition: all 0.2s linear;
-
+      @apply relative transition-all duration-200 ease-linear;
       &.active {
-        font-weight: 700;
+        @apply font-bold;
         &::after {
-          width: 100%;
+          @apply w-full;
         }
       }
 
@@ -23,15 +20,16 @@
         border-radius: 5px;
         left: 50%;
         transform: translateX(-50%);
-        bottom: -18px;
-        background-color: var(--color-primary);
+        bottom: -26px;
+        // background-color: var(--color-primary);
         transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        @apply bg-primary;
       }
 
       &:hover {
-        color: black;
+        @apply text-black;
         &::after {
-          width: 100%;
+          @apply w-full;
         }
       }
     }

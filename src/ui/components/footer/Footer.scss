@@ -1,0 +1,65 @@
+@reference "./../../../main.scss";
+
+.row {
+  @apply flex items-center py-10;
+  .row__boxes {
+    @apply divide-primary/10 flex divide-x-[1px];
+  }
+  &__box {
+    @apply pr-14 pl-12;
+    img {
+      @apply mb-8;
+    }
+    h2 {
+      @apply mb-2 text-[17px] font-bold;
+    }
+    p {
+      @apply text-grey-dark-2;
+    }
+  }
+
+  &__form {
+    @apply flex-[100rem] px-12;
+    h2 {
+      @apply mb-6 text-[18px] font-bold;
+    }
+  }
+}
+.footer {
+  &__list {
+    @apply flex flex-col gap-6;
+    & li:first-child {
+      font-weight: 700;
+      font-size: 17px;
+    }
+    & li:not(:first-child) {
+      transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      cursor: pointer;
+      &:hover {
+        transform: translateX(10px);
+        color: var(--color-primary);
+      }
+    }
+  }
+  &__social {
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+    &__icon {
+      color: var(--color-primary);
+      font-size: 2.2rem;
+      border: 1px solid var(--color-primary);
+      padding: 1rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.1s linear;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    & img {
+      width: 6rem;
+    }
+  }
+}

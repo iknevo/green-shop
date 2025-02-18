@@ -3,6 +3,10 @@
 @theme {
   --color-primary: #46a358;
   --color-primary-dark-1: #1c4123;
+  --color-grey-light: #fbfbfb;
+  --color-grey-dark: #3d3d3d;
+  --color-grey-dark-2: #727272;
+  --font-second: "Roboto", serif;
 }
 
 html {
@@ -12,5 +16,6 @@ html {
 body {
   font-family: "Montserrat", serif;
   font-size: 1.6rem;
-  color: #3d3d3d;
+  color: var(--color-grey-dark);
+  background-color: #fff;
 }

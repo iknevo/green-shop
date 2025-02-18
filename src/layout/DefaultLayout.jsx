@@ -3,7 +3,7 @@ import { Footer, Header } from "../ui";
 
 export default function DefaultLayout() {
   return (
-    <div className="px-20 py-8">
+    <div className="px-30 pt-8">
       <Header />
       <Outlet />
       <Footer />

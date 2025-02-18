@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import HeaderNav from "./components/HeaderNav";
-import Footer from "./components/Footer";
+import Header from "./components/header/Header";
+import HeaderNav from "./components/header/HeaderNav";
+import Footer from "./components/footer/Footer";
 import Logo from "./components/Logo";
 import LogoSmall from "./components/LogoSmall";
-import Button from "./components/Button";
+import Button from "./buttons/Button";
 
 export { Header, Footer, Logo, LogoSmall, HeaderNav, Button };
