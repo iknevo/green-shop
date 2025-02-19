@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary-light-1: #59ac69;
   --color-primary: #46a358;
   --color-primary-dark-1: #1c4123;
   --color-grey-light: #fbfbfb;
@@ -11,6 +12,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {

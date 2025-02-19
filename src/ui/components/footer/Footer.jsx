@@ -6,7 +6,7 @@ import {
   firstPlant,
   secondPlant,
   thirdPlant,
-} from "./icons";
+} from "./assets";
 import "./Footer.scss";
 import Button from "../../buttons/Button";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
