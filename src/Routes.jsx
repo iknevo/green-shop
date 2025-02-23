@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import { DefaultLayout } from "./layout";
+import { DefaultLayout } from "./layouts";
 import { Home, Shop } from "./pages";
 
 const myRouter = createBrowserRouter([
