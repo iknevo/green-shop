@@ -5,7 +5,7 @@ export default function ProductItem({ product }) {
   return (
     <div className="space-y-10">
       <img
-        className="aspect-square w-[25rem] object-cover object-center"
+        className="aspect-square w-full object-cover object-center"
         src={product.imageUrl}
         alt={`${product.name} image`}
       />
