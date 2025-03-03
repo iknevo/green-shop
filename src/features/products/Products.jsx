@@ -14,11 +14,11 @@ export default function Products() {
       <h2 className="text-primary mt-10 text-center text-9xl font-bold tracking-wider uppercase">
         Our products
       </h2>
-      <div className="mt-20 mb-10 grid grid-cols-4 gap-10">
+      <div className="mt-30 mb-10 grid grid-cols-4 gap-x-10 gap-y-40">
         {products.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}
-        <div className="col-span-4 mt-16">
+        <div className="col-span-4">
           <Pagination numResults={count} />
         </div>
       </div>

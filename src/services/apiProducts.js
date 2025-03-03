@@ -5,7 +5,9 @@ import supabase from "./supabase";
 export async function getProducts({ page }) {
   let query = supabase
     .from("products")
-    .select("id,name,price,discount,imageUrl", { count: "exact" });
+    .select("id,name,price,discount,imageUrl,category,sizes", {
+      count: "exact",
+    });
 
   // pagination
   if (page) {

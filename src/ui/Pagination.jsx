@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import PaginationButton from "./buttons/PaginationButton";
 import { useSearchParams } from "react-router";
 import { PRODUCTS_PER_PAGE } from "../utils/constants";
+import PaginationButton from "./buttons/PaginationButton";
 
 export default function Pagination({ numResults }) {
   const [searchParams, setSearchParams] = useSearchParams();
