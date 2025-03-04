@@ -3,6 +3,7 @@ import saleImage from "./../../assets/images/sale.png";
 import Loader from "./../../ui/Loader";
 import AsideItem from "./AsideItem";
 import ListItem from "./ListItem";
+import PriceRange from "./PriceRange";
 import { useProducts } from "./useProducts";
 
 export default function ProductsAside() {
@@ -21,7 +22,9 @@ export default function ProductsAside() {
           ))}
         </ul>
       </AsideItem>
-      <AsideItem title="Price Range">price range</AsideItem>
+      <AsideItem title="Price Range">
+        <PriceRange />
+      </AsideItem>
       <AsideItem title="Size">
         <ul className="flex flex-col gap-6">
           {sizes.map((size) => (
@@ -30,7 +33,7 @@ export default function ProductsAside() {
         </ul>
       </AsideItem>
       <div>
-        <img src={saleImage} alt="" />
+        <img src={saleImage} alt="super sale up to 75% off" />
       </div>
     </aside>
   );

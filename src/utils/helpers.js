@@ -23,14 +23,14 @@ export function getSizes(products) {
     small: 0,
     medium: 0,
     large: 0,
-    extraLarge: 0,
+    "extra large": 0,
   };
   products.forEach((product) => {
     product.sizes.forEach((size) => {
       if (size === "S") sizes.small++;
       if (size === "M") sizes.medium++;
       if (size === "L") sizes.large++;
-      if (size === "XL") sizes.extraLarge++;
+      if (size === "XL") sizes["extra large"]++;
     });
   });
   return Object.entries(sizes).map(([name, count]) => {
