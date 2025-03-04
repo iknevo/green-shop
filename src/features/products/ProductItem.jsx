@@ -7,7 +7,7 @@ export default function ProductItem({ product }) {
   const hasDiscount = discount > 0;
   const discountPercentage = Math.round((discount / oldPrice) * 100) + "%";
   return (
-    <div className="product_item relative cursor-pointer space-y-10 pt-16">
+    <div className="product_item relative cursor-pointer space-y-10 p-4 pt-16 shadow-xs">
       {hasDiscount && (
         <div className="tag bg-primary absolute top-8 left-0 px-4 py-2 font-semibold text-white uppercase">
           {discountPercentage} Off

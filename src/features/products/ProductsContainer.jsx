@@ -4,13 +4,13 @@ import ProductItem from "./ProductItem";
 import { useProducts } from "./useProducts";
 
 export default function ProductsContainer() {
-  const { products, isLoadingProducts, count } = useProducts();
-  if (isLoadingProducts) {
-    return <div className="col-span-3">{isLoadingProducts && <Loader />}</div>;
+  const { products, isLoading, count } = useProducts();
+  if (isLoading) {
+    return <div className="col-span-3">{isLoading && <Loader />}</div>;
   }
   return (
     <>
-      <div className="col-span-3 grid grid-cols-3 gap-y-10">
+      <div className="col-span-3 grid grid-cols-3 gap-x-16 gap-y-30">
         {products.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}

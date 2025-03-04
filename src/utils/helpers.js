@@ -4,3 +4,36 @@ export function formatCurrency(value) {
     currency: "USD",
   }).format(value);
 }
+
+export function getCategories(products) {
+  const categories = {};
+  products?.forEach((product) => {
+    categories[product.category] = (categories[product.category] || 0) + 1;
+  });
+  return Object.entries(categories).map(([name, count]) => {
+    return {
+      name,
+      count,
+    };
+  });
+}
+
+export function getSizes(products) {
+  const sizes = {
+    small: 0,
+    medium: 0,
+    large: 0,
+    extraLarge: 0,
+  };
+  products.forEach((product) => {
+    product.sizes.forEach((size) => {
+      if (size === "S") sizes.small++;
+      if (size === "M") sizes.medium++;
+      if (size === "L") sizes.large++;
+      if (size === "XL") sizes.extraLarge++;
+    });
+  });
+  return Object.entries(sizes).map(([name, count]) => {
+    return { name, count };
+  });
+}
