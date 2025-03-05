@@ -1,5 +1,4 @@
 import { formatCurrency } from "../../utils/helpers";
-import { products } from "./../../data/data";
 import "./ProductItem.scss";
 /* eslint-disable react/prop-types */
 export default function ProductItem({ product }) {
