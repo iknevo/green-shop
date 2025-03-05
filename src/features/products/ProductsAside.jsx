@@ -1,36 +1,36 @@
-import { getCategories, getSizes } from "../../utils/helpers";
+import Filter from "../../components/Filter";
 import saleImage from "./../../assets/images/sale.png";
-import Loader from "./../../ui/Loader";
 import AsideItem from "./AsideItem";
-import ListItem from "./ListItem";
 import PriceRange from "./PriceRange";
-import { useProducts } from "./useProducts";
 
 export default function ProductsAside() {
-  const { products, isLoading } = useProducts();
-
-  if (isLoading) return <Loader />;
-  const categories = getCategories(products);
-  const sizes = getSizes(products);
-
   return (
     <aside className="bg-grey-light space-y-15 rounded-xl">
       <AsideItem title="Categories">
-        <ul className="flex flex-col gap-6">
-          {categories.map((category) => (
-            <ListItem data={category} key={category.name + Math.random()} />
-          ))}
-        </ul>
+        <Filter
+          filterField="category"
+          options={[
+            { label: "ALL PLANTS", value: "all" },
+            { label: "OUTDOOR PLANTS", value: "Outdoor Plants" },
+            { label: "POTTER PLANTS", value: "Potter Plants" },
+            { label: "INDOOR PLANTS", value: "Indoor Plants" },
+          ]}
+        />
       </AsideItem>
       <AsideItem title="Price Range">
         <PriceRange />
       </AsideItem>
       <AsideItem title="Size">
-        <ul className="flex flex-col gap-6">
-          {sizes.map((size) => (
-            <ListItem data={size} key={size.name + Math.random()} />
-          ))}
-        </ul>
+        <Filter
+          filterField="size"
+          options={[
+            { label: "All", value: "all" },
+            { label: "Small", value: "S" },
+            { label: "Medium", value: "M" },
+            { label: "Large", value: "L" },
+            { label: "Extra Large", value: "XL" },
+          ]}
+        />
       </AsideItem>
       <div>
         <img src={saleImage} alt="super sale up to 75% off" />
@@ -38,12 +38,3 @@ export default function ProductsAside() {
     </aside>
   );
 }
-
-// function CategoryItem({ category }) {
-//   return (
-//     <li className="flex items-center justify-between font-medium">
-//       <span>{category.name}</span>
-//       <span>({category.count})</span>
-//     </li>
-//   );
-// }

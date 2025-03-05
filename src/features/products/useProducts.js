@@ -6,14 +6,20 @@ import { PRODUCTS_PER_PAGE } from "../../utils/constants";
 export function useProducts() {
   const queryClient = useQueryClient();
   const [searchParams] = useSearchParams();
+  const filterValue = searchParams.get("category") || "all";
+  const filter =
+    !filterValue || filterValue === "all"
+      ? null
+      : { field: "category", value: filterValue };
+
   const page = !searchParams.get("page") ? 1 : +searchParams.get("page");
   const {
     data: { data: products, count } = {},
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["products", page],
-    queryFn: () => getProducts({ page }),
+    queryKey: ["products", page, filter],
+    queryFn: () => getProducts({ filter, page }),
   });
 
   // prefetching

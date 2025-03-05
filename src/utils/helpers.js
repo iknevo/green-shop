@@ -25,7 +25,7 @@ export function getSizes(products) {
     large: 0,
     "extra large": 0,
   };
-  products.forEach((product) => {
+  products?.forEach((product) => {
     product.sizes.forEach((size) => {
       if (size === "S") sizes.small++;
       if (size === "M") sizes.medium++;

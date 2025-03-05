@@ -1,4 +1,5 @@
 import { formatCurrency } from "../../utils/helpers";
+import { products } from "./../../data/data";
 import "./ProductItem.scss";
 /* eslint-disable react/prop-types */
 export default function ProductItem({ product }) {
@@ -22,15 +23,20 @@ export default function ProductItem({ product }) {
       </div>
       <div className="px-5">
         <p className="mb-2 text-3xl font-semibold">{product.name}</p>
-        <div className="flex gap-4 text-3xl">
-          <span className="text-primary font-bold">
-            {formatCurrency(price)}
-          </span>
-          {hasDiscount && (
-            <span className="text-grey-light-2 font-bold line-through">
-              {formatCurrency(oldPrice)}
+        <div className="flex items-center justify-between">
+          <div className="flex gap-4 text-3xl">
+            <span className="text-primary font-bold">
+              {formatCurrency(price)}
             </span>
-          )}
+            {hasDiscount && (
+              <span className="text-grey-light-2 font-semibold line-through">
+                {formatCurrency(oldPrice)}
+              </span>
+            )}
+          </div>
+          <span className="bg-primary-light-2 rounded-2xl px-2 py-1 font-semibold text-white lowercase">
+            {product.category.split(" ").at(0)}
+          </span>
         </div>
       </div>
     </div>

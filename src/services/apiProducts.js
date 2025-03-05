@@ -1,13 +1,14 @@
 import { PRODUCTS_PER_PAGE } from "../utils/constants";
 import supabase from "./supabase";
-// import { PRODUCTS_PER_PAGE } from "./../utils/constants";
 
-export async function getProducts({ page }) {
+export async function getProducts({ filter, page }) {
   let query = supabase
     .from("products")
     .select("id,name,price,discount,imageUrl,category,sizes", {
       count: "exact",
     });
+
+  if (filter) query = query.eq(filter.field, filter.value);
 
   // pagination
   if (page) {
