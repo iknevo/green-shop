@@ -1,4 +1,8 @@
-import { PRODUCTS_PER_PAGE } from "../utils/constants";
+import {
+  PRODUCTS_MAX_PRICE,
+  PRODUCTS_MIN_PRICE,
+  PRODUCTS_PER_PAGE,
+} from "../utils/constants";
 import supabase from "./supabase";
 
 export async function getProducts({ filter, priceFilter, page }) {
@@ -13,8 +17,8 @@ export async function getProducts({ filter, priceFilter, page }) {
 
   if (priceFilter)
     query = query
-      .gte("price", priceFilter.minPrice || 20)
-      .lte("price", priceFilter.maxPrice || 500);
+      .gte("price", priceFilter.minPrice || PRODUCTS_MIN_PRICE)
+      .lte("price", priceFilter.maxPrice || PRODUCTS_MAX_PRICE);
 
   // pagination
   if (page) {

@@ -3,12 +3,15 @@ import Slider from "@mui/material/Slider";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { Button } from "../../ui";
+import { PRODUCTS_MAX_PRICE, PRODUCTS_MIN_PRICE } from "../../utils/constants";
 
 export default function PriceRange() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [minPrice, setMinPrice] = useState(+searchParams.get("minPrice") || 50);
+  const [minPrice, setMinPrice] = useState(
+    +searchParams.get("minPrice") || PRODUCTS_MIN_PRICE,
+  );
   const [maxPrice, setMaxPrice] = useState(
-    +searchParams.get("maxPrice") || 500,
+    +searchParams.get("maxPrice") || PRODUCTS_MAX_PRICE,
   );
 
   useEffect(() => {
@@ -31,8 +34,8 @@ export default function PriceRange() {
   }
 
   function handleReset() {
-    searchParams.set("minPrice", 50);
-    searchParams.set("maxPrice", 500);
+    searchParams.set("minPrice", PRODUCTS_MIN_PRICE);
+    searchParams.set("maxPrice", PRODUCTS_MAX_PRICE);
     setSearchParams(searchParams);
   }
 
