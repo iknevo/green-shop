@@ -20,7 +20,20 @@ export default function Pagination({ numResults }) {
     searchParams.set("page", nextPage);
     setSearchParams(searchParams);
   }
-  if (pagesCount <= 1) return null;
+  if (pagesCount <= 1)
+    return (
+      <div className="flex items-center justify-between">
+        <p className="text-primary text-3xl font-bold">
+          showing <span>{(currentPage - 1) * PRODUCTS_PER_PAGE + 1}</span> to{" "}
+          <span>
+            {currentPage === pagesCount
+              ? numResults
+              : currentPage * PRODUCTS_PER_PAGE}
+          </span>{" "}
+          of <span>{numResults}</span> products
+        </p>
+      </div>
+    );
 
   return (
     <div className="flex items-center justify-between">

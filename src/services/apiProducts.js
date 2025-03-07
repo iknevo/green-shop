@@ -13,8 +13,8 @@ export async function getProducts({ filter, priceFilter, page }) {
 
   if (priceFilter)
     query = query
-      .gte("price", priceFilter.minPrice)
-      .lte("price", priceFilter.maxPrice);
+      .gte("price", priceFilter.minPrice || 20)
+      .lte("price", priceFilter.maxPrice || 500);
 
   // pagination
   if (page) {
