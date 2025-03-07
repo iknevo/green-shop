@@ -4,7 +4,7 @@ export default function Loader() {
 
   return (
     <div className="w-full text-center">
-      <l-tail-chase size="80" speed="1.75" color="#46a358"></l-tail-chase>;
+      <l-tail-chase size="80" speed="1.75" color="#46a358"></l-tail-chase>
     </div>
   );
 }

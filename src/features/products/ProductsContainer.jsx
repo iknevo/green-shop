@@ -18,7 +18,7 @@ export default function ProductsContainer() {
       ? products
       : products?.filter((product) => product.sizes.includes(sizeValue));
 
-  if (!displayProducts.length) return <Empry resourceName="products" />;
+  if (!displayProducts?.length) return <Empry resourceName="products" />;
   return (
     <>
       <div className="col-span-3 grid grid-cols-3 gap-x-16 gap-y-30">
