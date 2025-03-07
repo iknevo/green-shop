@@ -5,7 +5,7 @@ import PriceRange from "./PriceRange";
 
 export default function ProductsAside() {
   return (
-    <aside className="bg-grey-light space-y-15 rounded-xl">
+    <aside className="bg-grey-light space-y-15">
       <AsideItem title="Categories">
         <Filter
           filterField="category"
@@ -32,9 +32,7 @@ export default function ProductsAside() {
           ]}
         />
       </AsideItem>
-      <div className="">
-        <img src={saleImage} alt="super sale up to 75% off" />
-      </div>
+      <img src={saleImage} alt="super sale up to 75% off" />
     </aside>
   );
 }

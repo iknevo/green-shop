@@ -1,6 +1,5 @@
-import ProductsContainer from "./ProductsContainer";
-// import ProductsContainer from "./ProductsContainer";
 import ProductsAside from "./ProductsAside";
+import ProductsContainer from "./ProductsContainer";
 
 export default function Products() {
   return (
