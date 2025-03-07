@@ -1,14 +1,20 @@
 import { PRODUCTS_PER_PAGE } from "../utils/constants";
 import supabase from "./supabase";
 
-export async function getProducts({ filter, page }) {
+export async function getProducts({ filter, priceFilter, page }) {
   let query = supabase
     .from("products")
     .select("id,name,price,discount,imageUrl,category,sizes", {
       count: "exact",
     });
 
+  // filter
   if (filter) query = query.eq(filter.field, filter.value);
+
+  if (priceFilter)
+    query = query
+      .gte("price", priceFilter.minPrice)
+      .lte("price", priceFilter.maxPrice);
 
   // pagination
   if (page) {

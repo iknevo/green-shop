@@ -5,6 +5,10 @@ export function formatCurrency(value) {
   }).format(value);
 }
 
+export function getNumFromText(text) {
+  return +text.match(/\d+/)[0];
+}
+
 export function getCategories(products) {
   const categories = {};
   products?.forEach((product) => {

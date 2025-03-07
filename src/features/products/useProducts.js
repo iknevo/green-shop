@@ -12,14 +12,18 @@ export function useProducts() {
       ? null
       : { field: "category", value: filterValue };
 
+  const minPriceValue = +searchParams.get("minPrice") || null;
+  const maxPriceValue = +searchParams.get("maxPrice") || null;
+  let priceFilter = { minPrice: minPriceValue, maxPrice: maxPriceValue };
+
   const page = !searchParams.get("page") ? 1 : +searchParams.get("page");
   const {
     data: { data: products, count } = {},
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["products", page, filter],
-    queryFn: () => getProducts({ filter, page }),
+    queryKey: ["products", page, filter, priceFilter],
+    queryFn: () => getProducts({ filter, page, priceFilter }),
   });
 
   // prefetching
