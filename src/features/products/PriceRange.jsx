@@ -74,10 +74,16 @@ export default function PriceRange() {
           {minPrice}$ &mdash; {maxPrice}$
         </span>
       </Box>
-      <Button onClick={handleFilter} className="mt-10 w-full rounded-xl pt-4">
+      <Button
+        onClick={handleFilter}
+        className="bg-primary mt-10 w-full rounded-xl pt-4"
+      >
         Filter Price
       </Button>
-      <Button onClick={handleReset} className="mt-4 w-full rounded-xl pt-4">
+      <Button
+        onClick={handleReset}
+        className="bg-primary mt-4 w-full rounded-xl pt-4"
+      >
         Reset Price
       </Button>
     </>

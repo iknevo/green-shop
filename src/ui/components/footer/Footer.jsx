@@ -1,19 +1,19 @@
+import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { FiInstagram } from "react-icons/fi";
+import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
+import { LuPhoneCall } from "react-icons/lu";
+import Button from "../../buttons/Button";
+import Logo from "../Logo";
 import {
-  Visa,
   Amex,
   MasterCard,
   PayPal,
+  Visa,
   firstPlant,
   secondPlant,
   thirdPlant,
 } from "./assets";
 import "./Footer.scss";
-import Button from "../../buttons/Button";
-import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
-import Logo from "../Logo";
-import { LuPhoneCall } from "react-icons/lu";
-import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-import { FiInstagram } from "react-icons/fi";
 export default function Footer() {
   return (
     <footer className="footer">
@@ -53,7 +53,7 @@ export default function Footer() {
                 type="text"
                 placeholder="enter your email address..."
               />
-              <Button className="font-second rounded-r-2xl px-11 text-2xl font-bold tracking-wider">
+              <Button className="font-second bg-primary rounded-r-2xl px-11 text-2xl font-bold tracking-wider">
                 Join
               </Button>
             </form>

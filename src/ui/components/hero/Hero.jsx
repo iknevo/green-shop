@@ -1,6 +1,6 @@
-import { HeroImage } from "./assets";
-import Button from "./../../buttons/Button.jsx";
 import { Link } from "react-router";
+import Button from "./../../buttons/Button.jsx";
+import { HeroImage } from "./assets";
 
 export default function Hero() {
   return (
@@ -15,7 +15,7 @@ export default function Hero() {
           plants. Use our plants to create an unique Urban Jungle. Order your
           favorite plants!
         </p>
-        <Button className="hover:bg-primary-light-1 rounded-xl px-12 py-6 text-2xl font-semibold transition-all duration-300">
+        <Button className="hover:bg-primary-light-1 bg-primary rounded-xl px-12 py-6 text-2xl font-semibold transition-all duration-300">
           <Link to="/shop">Shop Now</Link>
         </Button>
       </div>

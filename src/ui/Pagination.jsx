@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+
+import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router";
 import { PRODUCTS_PER_PAGE } from "../utils/constants";
-import PaginationButton from "./buttons/PaginationButton";
+import Button from "./buttons/Button";
 
 export default function Pagination({ numResults }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,6 +21,14 @@ export default function Pagination({ numResults }) {
     searchParams.set("page", nextPage);
     setSearchParams(searchParams);
   }
+
+  function move(page) {
+    // const nextPage = currentPage === pagesCount ? currentPage : page;
+    console.log(currentPage, pagesCount);
+    searchParams.set("page", page);
+    setSearchParams(searchParams);
+  }
+
   if (pagesCount <= 1)
     return (
       <div className="flex items-center justify-between">
@@ -46,15 +55,34 @@ export default function Pagination({ numResults }) {
         </span>{" "}
         of <span>{numResults}</span> products
       </p>
-      <div className="flex items-center gap-8">
-        <PaginationButton onClick={prev} disabled={currentPage === 1}>
-          <HiChevronLeft className="text-4xl" />
-          <span>Previous</span>
-        </PaginationButton>
-        <PaginationButton onClick={next} disabled={currentPage === pagesCount}>
-          <span>Next</span>
-          <HiChevronRight className="text-4xl" />
-        </PaginationButton>
+      <div className="flex items-center gap-3">
+        <Button
+          className={`h-14 w-14 rounded-md ${currentPage === 1 ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
+          onClick={prev}
+          disabled={currentPage === 1}
+        >
+          <HiOutlineArrowLeft />
+        </Button>
+        {Array.from({ length: pagesCount }, (_, i) => (
+          <Button
+            onClick={() => move(i + 1)}
+            className={`h-14 w-14 rounded-md border border-gray-200 ${i + 1 === currentPage ? "bg-primary text-white" : "bg-white"}`}
+            key={i}
+          >
+            <span
+              className={`${i + 1 === currentPage ? "text-white" : "text-black"} `}
+            >
+              {i + 1}
+            </span>
+          </Button>
+        ))}
+        <Button
+          className={`h-14 w-14 rounded-md ${currentPage === pagesCount ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
+          onClick={next}
+          disabled={currentPage === pagesCount}
+        >
+          <HiOutlineArrowRight />
+        </Button>
       </div>
     </div>
   );

@@ -1,15 +1,24 @@
 /* eslint-disable react/prop-types */
-export default function Button({ children, className, onClick }) {
+export default function Button({
+  children,
+  className,
+  onClick,
+  disabled = false,
+}) {
   function handleClick() {
     onClick?.();
   }
 
   let defaultClassName =
-    "bg-primary flex cursor-pointer items-center justify-center space-x-2 px-4 py-3 leading-none text-white";
+    "flex cursor-pointer disabled:cursor-not-allowed items-center justify-center space-x-2 px-4 py-3 leading-none text-white";
   if (className) defaultClassName += ` ${className}`;
 
   return (
-    <button onClick={handleClick} className={defaultClassName}>
+    <button
+      onClick={handleClick}
+      disabled={disabled}
+      className={defaultClassName}
+    >
       {children}
     </button>
   );
