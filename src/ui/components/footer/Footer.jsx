@@ -2,8 +2,6 @@ import { FaFacebookF, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { FiInstagram } from "react-icons/fi";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
 import { LuPhoneCall } from "react-icons/lu";
-import Button from "../../buttons/Button";
-import Logo from "../Logo";
 import {
   Amex,
   MasterCard,
@@ -12,7 +10,9 @@ import {
   firstPlant,
   secondPlant,
   thirdPlant,
-} from "./assets";
+} from "../../../assets";
+import Button from "../../buttons/Button";
+import Logo from "../Logo";
 import "./Footer.scss";
 export default function Footer() {
   return (

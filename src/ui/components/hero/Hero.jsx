@@ -1,6 +1,6 @@
 import { Link } from "react-router";
+import { heroImage } from "../../../assets";
 import Button from "./../../buttons/Button.jsx";
-import { HeroImage } from "./assets";
 
 export default function Hero() {
   return (
@@ -20,7 +20,7 @@ export default function Hero() {
         </Button>
       </div>
       <div className="relative">
-        <img className="w-full" src={HeroImage} alt="green plant hero image" />
+        <img className="w-full" src={heroImage} alt="green plant hero image" />
       </div>
     </div>
   );

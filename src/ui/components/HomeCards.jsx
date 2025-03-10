@@ -6,7 +6,7 @@ import "./HomeCards.scss";
 export default function HomeCards() {
   return (
     <div className="flex items-center gap-16 py-30">
-      <div className="bg-grey-light home_card flex flex-1 items-center justify-between px-12">
+      <div className="home_card bg-grey-light flex flex-1 items-center justify-between rounded-xl px-12">
         <img className="" src={home1} alt="plant image" />
         <div className="flex flex-col items-end text-right">
           <h2 className="mb-8 text-4xl font-bold text-black uppercase">

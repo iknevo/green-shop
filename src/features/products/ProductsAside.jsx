@@ -1,5 +1,5 @@
 import Filter from "../../components/Filter";
-import saleImage from "./../../assets/images/sale.png";
+import { sale } from "./../../assets";
 import AsideItem from "./AsideItem";
 import PriceRange from "./PriceRange";
 
@@ -32,7 +32,7 @@ export default function ProductsAside() {
           ]}
         />
       </AsideItem>
-      <img src={saleImage} alt="super sale up to 75% off" />
+      <img src={sale} alt="super sale up to 75% off" />
     </aside>
   );
 }
