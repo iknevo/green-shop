@@ -3,6 +3,7 @@
 // import { products } from "../data/data";
 import { Products } from "../features";
 import { Hero } from "../ui";
+import HomeCards from "../ui/components/HomeCards";
 
 export default function Home() {
   // !for development only
@@ -16,6 +17,7 @@ export default function Home() {
     <section className="my-10">
       <Hero />
       <Products />
+      <HomeCards />
     </section>
   );
 }
