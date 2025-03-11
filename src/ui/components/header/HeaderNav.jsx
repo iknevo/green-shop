@@ -1,18 +1,26 @@
 import { NavLink } from "react-router";
+import { useScrollToTop } from "../../../hooks/useScrollToTop";
 import "./HeaderNav.scss";
 
 export default function HeaderNav() {
+  const scrollTop = useScrollToTop();
   return (
     <nav className="nav">
       <ul className="nav__list">
         <li>
-          <NavLink to="/home">Home</NavLink>
+          <NavLink onClick={scrollTop} to="/home">
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/shop">Shop</NavLink>
+          <NavLink onClick={scrollTop} to="/shop">
+            Shop
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/blogs">Blogs</NavLink>
+          <NavLink onClick={scrollTop} to="/blogs">
+            Blogs
+          </NavLink>
         </li>
       </ul>
     </nav>
