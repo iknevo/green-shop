@@ -11,7 +11,7 @@ export default function ProductsFilter({ options }) {
     setSearchParams(searchParams);
   }
   return (
-    <div className="border-grey-light-1 flex items-center gap-2 border-1 p-2">
+    <div className="border-grey-light-1 flex items-center gap-2 rounded-md border-1 p-2">
       {options.map((option) => (
         <Button
           onClick={() => handleClick(option.value)}

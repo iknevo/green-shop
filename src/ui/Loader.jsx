@@ -12,7 +12,6 @@ export default function Loader() {
         speed="1"
         color="#46a358"
       ></l-line-spinner>
-      ;
     </div>
   );
 }

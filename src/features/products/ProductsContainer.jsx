@@ -23,8 +23,7 @@ export default function ProductsContainer() {
   return (
     <>
       <div className="col-span-3 grid grid-cols-3 gap-x-16 gap-y-30">
-        <div className="col-span-3 flex items-center justify-between">
-          <span>sort</span>
+        <div className="col-span-3 -mb-20 flex items-center justify-end">
           <ProductsFilter
             options={[
               { value: "all", label: "All" },

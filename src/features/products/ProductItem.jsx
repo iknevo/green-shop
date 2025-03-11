@@ -52,9 +52,9 @@ export default function ProductItem({ product }) {
       <Button
         onClick={handleAddToCart}
         propagation={false}
-        className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-md py-4 text-white transition-all duration-300 group-hover:bottom-0"
+        className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-b-md py-4 text-white transition-all duration-300 group-hover:bottom-0"
       >
-        Buy now
+        Order now
       </Button>
     </div>
   );
