@@ -14,7 +14,8 @@ export function useProducts() {
 
   const minPriceValue = +searchParams.get("minPrice") || null;
   const maxPriceValue = +searchParams.get("maxPrice") || null;
-  let priceFilter = { minPrice: minPriceValue, maxPrice: maxPriceValue };
+  const priceFilter = { minPrice: minPriceValue, maxPrice: maxPriceValue };
+  const discountFilter = searchParams.get("discount") || "all";
 
   const page = !searchParams.get("page") ? 1 : +searchParams.get("page");
   const {
@@ -22,8 +23,8 @@ export function useProducts() {
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["products", page, filter, priceFilter],
-    queryFn: () => getProducts({ filter, page, priceFilter }),
+    queryKey: ["products", page, filter, priceFilter, discountFilter],
+    queryFn: () => getProducts({ filter, page, priceFilter, discountFilter }),
   });
 
   // prefetching

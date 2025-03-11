@@ -21,7 +21,12 @@ export async function getProduct(id) {
   return { data, error, isLoading };
 }
 
-export async function getProducts({ filter, priceFilter, page }) {
+export async function getProducts({
+  filter,
+  priceFilter,
+  discountFilter,
+  page,
+}) {
   let query = supabase
     .from("products")
     .select("id,name,price,discount,imageUrl,category,sizes", {
@@ -30,11 +35,16 @@ export async function getProducts({ filter, priceFilter, page }) {
 
   // filter
   if (filter) query = query.eq(filter.field, filter.value);
-
+  // price filter
   if (priceFilter)
     query = query
       .gte("price", priceFilter.minPrice || PRODUCTS_MIN_PRICE)
       .lte("price", priceFilter.maxPrice || PRODUCTS_MAX_PRICE);
+  // discount filter
+  if (discountFilter) {
+    if (discountFilter === "no-discount") query = query.eq("discount", 0);
+    if (discountFilter === "with-discount") query = query.gt("discount", 0);
+  }
 
   // pagination
   if (page) {

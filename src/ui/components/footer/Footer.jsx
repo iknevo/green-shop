@@ -53,7 +53,7 @@ export default function Footer() {
                 type="text"
                 placeholder="enter your email address..."
               />
-              <Button className="font-second bg-primary rounded-r-2xl px-11 text-2xl font-bold tracking-wider">
+              <Button className="font-second bg-primary rounded-r-2xl px-11 text-2xl font-bold tracking-wider text-white">
                 Join
               </Button>
             </form>

@@ -74,7 +74,7 @@ export default function Pagination({ numResults, shop = false }) {
       </p>
       <div className="flex items-center gap-3">
         <Button
-          className={`h-14 w-14 rounded-md ${currentPage === 1 ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
+          className={`h-14 w-14 rounded-md text-white ${currentPage === 1 ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
           onClick={prev}
           disabled={currentPage === 1}
         >
@@ -94,7 +94,7 @@ export default function Pagination({ numResults, shop = false }) {
           </Button>
         ))}
         <Button
-          className={`h-14 w-14 rounded-md ${currentPage === pagesCount ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
+          className={`h-14 w-14 rounded-md text-white ${currentPage === pagesCount ? "bg-grey-light-2 cursor-not-allowed" : "bg-primary"}`}
           onClick={next}
           disabled={currentPage === pagesCount}
         >

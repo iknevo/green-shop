@@ -16,7 +16,7 @@ export default function HomeCards() {
             We are an online plant shop offering a wide <br /> range of cheap
             and trendy plants
           </p>
-          <Button className="bg-primary gap-4 rounded-md px-6 py-4 font-semibold">
+          <Button className="bg-primary gap-4 rounded-md px-6 py-4 font-semibold text-white">
             Find more
             <FaArrowRightLong />
           </Button>
@@ -32,7 +32,7 @@ export default function HomeCards() {
             We are an online plant shop offering a wide <br /> range of cheap
             and trendy plants
           </p>
-          <Button className="bg-primary gap-4 rounded-md px-6 py-4 font-semibold">
+          <Button className="bg-primary gap-4 rounded-md px-6 py-4 font-semibold text-white">
             Find more
             <FaArrowRightLong />
           </Button>

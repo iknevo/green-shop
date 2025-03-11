@@ -17,7 +17,7 @@ export default function ProductItem({ product }) {
   return (
     <div
       onClick={() => navigate(`/shop/${product.id}`)}
-      className="product_item group relative cursor-pointer space-y-10 self-start overflow-hidden px-4 pt-16 pb-12 shadow-xs"
+      className="product_item group relative cursor-pointer space-y-10 self-start overflow-hidden rounded-lg px-4 pt-16 pb-12 shadow-sm transition-all duration-300 hover:shadow-md"
     >
       {hasDiscount && (
         <div className="tag bg-primary absolute top-8 left-0 px-4 py-2 font-semibold text-white uppercase">
@@ -52,7 +52,7 @@ export default function ProductItem({ product }) {
       <Button
         onClick={handleAddToCart}
         propagation={false}
-        className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-md py-4 transition-all duration-300 group-hover:bottom-0"
+        className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-md py-4 text-white transition-all duration-300 group-hover:bottom-0"
       >
         Buy now
       </Button>

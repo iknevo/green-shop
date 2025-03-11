@@ -1,4 +1,4 @@
-import Filter from "../../components/Filter";
+import AsideFilter from "../../components/AsideFilter";
 import { sale } from "./../../assets";
 import AsideItem from "./AsideItem";
 import PriceRange from "./PriceRange";
@@ -7,7 +7,7 @@ export default function ProductsAside() {
   return (
     <aside className="bg-grey-light space-y-15">
       <AsideItem title="Categories">
-        <Filter
+        <AsideFilter
           filterField="category"
           options={[
             { label: "ALL PLANTS", value: "all" },
@@ -21,7 +21,7 @@ export default function ProductsAside() {
         <PriceRange />
       </AsideItem>
       <AsideItem title="Size">
-        <Filter
+        <AsideFilter
           filterField="size"
           options={[
             { label: "All", value: "all" },

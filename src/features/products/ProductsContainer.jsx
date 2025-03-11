@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router";
 import Empry from "../../components/Empry";
+import ProductsFilter from "../../components/ProductsFilter";
 import Loader from "../../ui/Loader";
 import Pagination from "../../ui/Pagination";
 import ProductItem from "./ProductItem";
@@ -13,7 +14,7 @@ export default function ProductsContainer() {
   if (isLoading) {
     return <div className="col-span-3 pt-30">{isLoading && <Loader />}</div>;
   }
-  const displayProducts =
+  let displayProducts =
     sizeValue === "all"
       ? products
       : products?.filter((product) => product.sizes.includes(sizeValue));
@@ -22,6 +23,16 @@ export default function ProductsContainer() {
   return (
     <>
       <div className="col-span-3 grid grid-cols-3 gap-x-16 gap-y-30">
+        <div className="col-span-3 flex items-center justify-between">
+          <span>sort</span>
+          <ProductsFilter
+            options={[
+              { value: "all", label: "All" },
+              { value: "no-discount", label: "No discount" },
+              { value: "with-discount", label: "With discount" },
+            ]}
+          />
+        </div>
         {displayProducts.map((product) => (
           <ProductItem product={product} key={product.id} />
         ))}

@@ -76,13 +76,13 @@ export default function PriceRange() {
       </Box>
       <Button
         onClick={handleFilter}
-        className="bg-primary mt-10 w-full rounded-xl pt-4"
+        className="bg-primary mt-10 w-full rounded-xl pt-4 text-white"
       >
         Filter Price
       </Button>
       <Button
         onClick={handleReset}
-        className="bg-primary mt-4 w-full rounded-xl pt-4"
+        className="bg-primary mt-4 w-full rounded-xl pt-4 text-white"
       >
         Reset Price
       </Button>

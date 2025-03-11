@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useSearchParams } from "react-router";
 
-export default function Filter({ filterField, options }) {
+export default function AsideFilter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options[0].value;
 
