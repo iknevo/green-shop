@@ -11,7 +11,7 @@ export default function ProductsContainer() {
 
   const { products, isLoading, count } = useProducts();
   if (isLoading) {
-    return <div className="col-span-3">{isLoading && <Loader />}</div>;
+    return <div className="col-span-3 pt-30">{isLoading && <Loader />}</div>;
   }
   const displayProducts =
     sizeValue === "all"

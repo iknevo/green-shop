@@ -4,9 +4,11 @@ export default function Button({
   className,
   onClick,
   disabled = false,
+  propagation = true,
 }) {
-  function handleClick() {
+  function handleClick(e) {
     onClick?.();
+    !propagation && e.stopPropagation();
   }
 
   let defaultClassName =

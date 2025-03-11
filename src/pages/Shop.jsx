@@ -1,3 +1,9 @@
+import ShopContainer from "../features/shop/ShopContainer";
+
 export default function Shop() {
-  return <div>Shop</div>;
+  return (
+    <div className="p-8">
+      <ShopContainer />
+    </div>
+  );
 }

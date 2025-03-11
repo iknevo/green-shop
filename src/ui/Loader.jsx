@@ -1,12 +1,28 @@
-import { tailChase } from "ldrs";
+// import { tailChase } from "ldrs";
+import { lineSpinner } from "ldrs";
+
 export default function Loader() {
-  tailChase.register();
+  lineSpinner.register();
 
   return (
     <div className="w-full text-center">
-      <l-tail-chase size="80" speed="1.75" color="#46a358"></l-tail-chase>
+      <l-line-spinner
+        size="80"
+        stroke="10"
+        speed="1"
+        color="#46a358"
+      ></l-line-spinner>
+      ;
     </div>
   );
 }
 
-// Default values shown
+// export default function Loader() {
+//   tailChase.register();
+
+//   return (
+//     <div className="w-full text-center">
+//       <l-tail-chase size="80" speed="1.75" color="#46a358"></l-tail-chase>
+//     </div>
+//   );
+// }

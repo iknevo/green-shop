@@ -2,13 +2,15 @@
 
 import { HiOutlineArrowLeft, HiOutlineArrowRight } from "react-icons/hi";
 import { useSearchParams } from "react-router";
-import { PRODUCTS_PER_PAGE } from "../utils/constants";
+import { PRODUCTS_PER_PAGE, PRODUCTS_PER_SHOP } from "../utils/constants";
 import Button from "./buttons/Button";
 
-export default function Pagination({ numResults }) {
+export default function Pagination({ numResults, shop = false }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = !searchParams.get("page") ? 1 : +searchParams.get("page");
-  const pagesCount = Math.ceil(numResults / PRODUCTS_PER_PAGE);
+  const pagesCount = Math.ceil(
+    numResults / (shop ? PRODUCTS_PER_SHOP : PRODUCTS_PER_PAGE),
+  );
 
   function prev() {
     const prevPage = currentPage === 1 ? 1 : currentPage - 1;
@@ -33,11 +35,19 @@ export default function Pagination({ numResults }) {
     return (
       <div className="flex items-center justify-between">
         <p className="text-primary text-3xl font-bold">
-          showing <span>{(currentPage - 1) * PRODUCTS_PER_PAGE + 1}</span> to{" "}
+          showing{" "}
+          <span>
+            {(currentPage - 1) *
+              (shop ? PRODUCTS_PER_SHOP : PRODUCTS_PER_PAGE) +
+              1}
+          </span>{" "}
+          to{" "}
           <span>
             {currentPage === pagesCount
               ? numResults
-              : currentPage * PRODUCTS_PER_PAGE}
+              : currentPage * shop
+                ? PRODUCTS_PER_SHOP
+                : PRODUCTS_PER_PAGE}
           </span>{" "}
           of <span>{numResults}</span> products
         </p>
@@ -47,11 +57,18 @@ export default function Pagination({ numResults }) {
   return (
     <div className="flex items-center justify-between">
       <p className="text-primary text-3xl font-bold">
-        showing <span>{(currentPage - 1) * PRODUCTS_PER_PAGE + 1}</span> to{" "}
+        showing{" "}
+        <span>
+          {(currentPage - 1) * (shop ? PRODUCTS_PER_SHOP : PRODUCTS_PER_PAGE) +
+            1}
+        </span>{" "}
+        to{" "}
         <span>
           {currentPage === pagesCount
             ? numResults
-            : currentPage * PRODUCTS_PER_PAGE}
+            : currentPage * shop
+              ? PRODUCTS_PER_SHOP
+              : PRODUCTS_PER_PAGE}
         </span>{" "}
         of <span>{numResults}</span> products
       </p>
