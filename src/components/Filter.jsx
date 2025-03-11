@@ -21,9 +21,9 @@ export default function Filter({ filterField, options }) {
             onClick={() => handleClick(option.value)}
             className={
               currentFilter === option.value
-                ? "text-primary cursor-not-allowed text-3xl font-bold"
+                ? "text-primary cursor-not-allowed text-3xl font-semibold"
                 : "" +
-                  "flex w-full cursor-pointer items-center justify-between text-3xl font-medium"
+                  "hover:text-primary cursor-pointer text-3xl font-semibold transition-all duration-300"
             }
           >
             <span>{option.label}</span>

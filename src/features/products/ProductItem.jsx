@@ -1,3 +1,4 @@
+import Button from "../../ui/buttons/Button";
 import { formatCurrency } from "../../utils/helpers";
 import "./ProductItem.scss";
 /* eslint-disable react/prop-types */
@@ -7,7 +8,7 @@ export default function ProductItem({ product }) {
   const hasDiscount = discount > 0;
   const discountPercentage = Math.round((discount / oldPrice) * 100) + "%";
   return (
-    <div className="product_item relative cursor-pointer space-y-10 self-start p-4 pt-16 shadow-xs">
+    <div className="product_item group relative cursor-pointer space-y-10 self-start overflow-hidden px-4 pt-16 pb-12 shadow-xs">
       {hasDiscount && (
         <div className="tag bg-primary absolute top-8 left-0 px-4 py-2 font-semibold text-white uppercase">
           {discountPercentage} Off
@@ -38,6 +39,9 @@ export default function ProductItem({ product }) {
           </span>
         </div>
       </div>
+      <Button className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-md py-4 transition-all duration-300 group-hover:bottom-0">
+        Add to cart
+      </Button>
     </div>
   );
 }

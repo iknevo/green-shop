@@ -13,6 +13,27 @@
   --color-tag-orange: #f6b766;
   --font-second: "Roboto", serif;
 }
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-grey-light);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-grey-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary-light-1);
+  cursor: pointer;
+}
 
 html {
   font-size: 62.5%;

@@ -63,7 +63,7 @@ export default function Pagination({ numResults }) {
         >
           <HiOutlineArrowLeft />
         </Button>
-        {Array.from({ length: pagesCount }, (_, i) => (
+        {[...Array(pagesCount)].map((_, i) => (
           <Button
             onClick={() => move(i + 1)}
             className={`h-14 w-14 rounded-md border border-gray-200 ${i + 1 === currentPage ? "bg-primary text-white" : "bg-white"}`}
