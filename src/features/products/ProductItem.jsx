@@ -44,7 +44,7 @@ export default function ProductItem({ product }) {
               </span>
             )}
           </div>
-          <span className="bg-primary-light-2 rounded-2xl px-2 py-1 font-semibold text-white lowercase">
+          <span className="bg-primary-light-2 rounded-2xl px-3 py-2 font-semibold text-white lowercase">
             {product.category.split(" ").at(0)}
           </span>
         </div>

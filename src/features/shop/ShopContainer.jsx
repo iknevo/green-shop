@@ -25,6 +25,10 @@ export default function ShopContainer() {
           <span>/</span>
           <Link to="/shop">Shop</Link>
         </BreadCrumbs>
+
+        <h2 className="text-primary mt-10 text-center text-9xl font-bold tracking-wider uppercase">
+          Shop
+        </h2>
         <div className="grid grid-cols-4 gap-x-16 gap-y-30 py-20">
           {shopProducts.map((product) => (
             <ProductItem product={product} key={product.id} />
