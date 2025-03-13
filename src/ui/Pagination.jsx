@@ -26,7 +26,6 @@ export default function Pagination({ numResults, shop = false }) {
 
   function move(page) {
     // const nextPage = currentPage === pagesCount ? currentPage : page;
-    console.log(currentPage, pagesCount);
     searchParams.set("page", page);
     setSearchParams(searchParams);
   }

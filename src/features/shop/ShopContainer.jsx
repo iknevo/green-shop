@@ -9,7 +9,7 @@ import { useShopProducts } from "./useShopProducts.js";
 export default function ShopContainer() {
   const { shopProducts, isLoading, count } = useShopProducts();
   let { productId } = useParams();
-  if (isLoading)
+  if (isLoading && !productId)
     return (
       <div className="py-30">
         <Loader />

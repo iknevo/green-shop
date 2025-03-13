@@ -11,5 +11,5 @@ export function useProduct(id) {
     queryFn: () => getProduct(id),
   });
 
-  return { product, isLoading, error };
+  return { product, error, isLoading };
 }

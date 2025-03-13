@@ -15,10 +15,12 @@ export async function getProduct(id) {
 
   if (error) {
     console.error(error);
-    throw new Error("There was an error while getting this products");
+    throw new Error(
+      "There was an error while getting this product, Please try again later!",
+    );
   }
 
-  return { data, error, isLoading };
+  return { data, isLoading };
 }
 
 export async function getProducts({
@@ -54,12 +56,13 @@ export async function getProducts({
   }
 
   const { data, error, count } = await query;
+
   if (error) {
     console.error(error);
     throw new Error("There was an error while getting products");
   }
 
-  return { data, error, count };
+  return { data, count };
 }
 
 export async function getShopProducts({ filter, priceFilter, page }) {
@@ -83,10 +86,11 @@ export async function getShopProducts({ filter, priceFilter, page }) {
   }
 
   const { data, error, count } = await query;
+
   if (error) {
     console.error(error);
     throw new Error("There was an error while getting products");
   }
 
-  return { data, error, count };
+  return { data, count };
 }
