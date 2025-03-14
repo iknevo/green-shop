@@ -31,14 +31,16 @@ export function useProducts() {
   const pagesCount = Math.ceil(count / PRODUCTS_PER_PAGE);
   if (page < pagesCount) {
     queryClient.prefetchQuery({
-      queryKey: ["products", page + 1, filter, priceFilter],
-      queryFn: () => getProducts({ page: page + 1, filter, priceFilter }),
+      queryKey: ["products", page + 1, filter, priceFilter, discountFilter],
+      queryFn: () =>
+        getProducts({ page: page + 1, filter, priceFilter, discountFilter }),
     });
   }
   if (page > 1) {
     queryClient.prefetchQuery({
-      queryKey: ["products", page - 1, filter, priceFilter],
-      queryFn: () => getProducts({ page: page - 1, filter, priceFilter }),
+      queryKey: ["products", page - 1, filter, priceFilter, discountFilter],
+      queryFn: () =>
+        getProducts({ page: page - 1, filter, priceFilter, discountFilter }),
     });
   }
 

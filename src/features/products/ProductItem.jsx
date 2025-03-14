@@ -20,7 +20,7 @@ export default function ProductItem({ product }) {
       className="product_item group relative cursor-pointer space-y-10 self-start overflow-hidden rounded-lg px-4 pt-16 pb-12 shadow-sm transition-all duration-300 hover:shadow-md"
     >
       {hasDiscount && (
-        <div className="tag bg-primary absolute top-8 left-0 px-4 py-2 font-semibold text-white uppercase">
+        <div className="bg-primary absolute top-8 left-0 px-4 py-2 font-semibold text-white uppercase">
           {discountPercentage} Off
         </div>
       )}

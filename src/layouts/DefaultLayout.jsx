@@ -1,21 +1,14 @@
-import { useLayoutEffect, useRef } from "react";
-import { Outlet, ScrollRestoration, useLocation } from "react-router";
+import { Outlet } from "react-router";
 import { Footer, Header } from "../ui";
+import ScrollToTop from "../ui/components/ScrollToTop";
 
 export default function DefaultLayout() {
-  const myRef = useRef(null);
-  const { pathname } = useLocation();
-
-  useLayoutEffect(() => {
-    myRef.current.scrollIntoView(true);
-  }, [pathname]);
-
   return (
-    <div className="px-30" ref={myRef}>
+    <div className="px-30">
+      <ScrollToTop />
       <Header />
       <Outlet />
       <Footer />
-      <ScrollRestoration />
     </div>
   );
 }

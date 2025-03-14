@@ -1,3 +1,4 @@
+import { Rating } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
@@ -6,8 +7,7 @@ import { useParams } from "react-router";
 import Error from "../../ui/Error.jsx";
 import { formatCurrency } from "../../utils/helpers.js";
 import { useProduct } from "../products/useProduct";
-import Button from "./../../ui/buttons/Button.jsx";
-import Loader from "./../../ui/Loader.jsx";
+import { Button, Loader } from "./../../ui";
 import SizeButton from "./SizeButton.jsx";
 
 export default function ShopItem() {
@@ -44,6 +44,10 @@ export default function ShopItem() {
   }
   if (isLoading) return <Loader />;
 
+  const discountPercentage =
+    Math.round((product.discount / (product.price + product.discount)) * 100) +
+    "%";
+
   return (
     <div className="grid grid-cols-2 items-start py-12">
       <div className="flex items-start justify-center">
@@ -55,12 +59,33 @@ export default function ShopItem() {
       </div>
       <div>
         <div className="flex flex-col gap-4 border-b-1 border-gray-300 pb-4">
-          <h2 className="text-5xl font-bold">{product.name}</h2>
+          <h2 className="flex items-center gap-8 text-5xl font-bold">
+            <span>{product.name}</span>
+
+            {product.discount > 0 && (
+              <span className="text-primary text-3xl font-semibold uppercase">
+                {discountPercentage} Off
+              </span>
+            )}
+          </h2>
           <div className="flex justify-between">
-            <span className="text-primary text-4xl font-bold">
-              {formatCurrency(product.price)}
-            </span>
-            <span>stars</span>
+            <div className="flex items-center gap-4">
+              <span className="text-primary text-4xl font-bold">
+                {formatCurrency(product.price)}
+              </span>
+
+              {product.discount > 0 && (
+                <span className="text-grey-light-2 text-3xl font-semibold line-through">
+                  {formatCurrency(product.price + product.discount)}
+                </span>
+              )}
+            </div>
+            <Rating
+              name="size-large"
+              defaultValue={product.stars}
+              size="large"
+              readOnly
+            />
           </div>
         </div>
         <div className="py-4">
