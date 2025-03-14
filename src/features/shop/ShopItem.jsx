@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa6";
+import { TiMinus, TiPlus } from "react-icons/ti";
 import { useParams } from "react-router";
 import Error from "../../ui/Error.jsx";
 import { formatCurrency } from "../../utils/helpers.js";
 import { useProduct } from "../products/useProduct";
+import Button from "./../../ui/buttons/Button.jsx";
 import Loader from "./../../ui/Loader.jsx";
 import SizeButton from "./SizeButton.jsx";
 
@@ -10,6 +14,8 @@ export default function ShopItem() {
   const { productId } = useParams();
   const { product, isLoading, error } = useProduct(productId);
   const [size, setSize] = useState("S");
+  const [quantity, setQuantity] = useState(1);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -21,7 +27,18 @@ export default function ShopItem() {
     setSize(e.target.textContent);
   }
 
-  console.log(product);
+  function quantityInc() {
+    if (quantity < product.inStock) setQuantity((quantity) => quantity + 1);
+  }
+
+  function quantityDec() {
+    if (quantity > 1) setQuantity((quantity) => quantity - 1);
+  }
+
+  function handleLike() {
+    setIsLiked((liked) => !liked);
+  }
+
   if (error) {
     return <Error text={error.message} />;
   }
@@ -81,6 +98,46 @@ export default function ShopItem() {
               disabled={!product.sizes.includes("XL")}
               onClick={handleSelectSize}
             />
+          </div>
+        </div>
+        <div className="pt-8">
+          <p className="text-3xl font-bold text-gray-600">
+            {product.inStock} items available in stock.
+          </p>
+          <div className="py-8">
+            <div className="flex items-center gap-12">
+              <div className="flex items-center gap-6">
+                <Button
+                  onClick={quantityDec}
+                  className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+                >
+                  <TiMinus className="text-3xl font-bold" />
+                </Button>
+                <div className="flex w-5 justify-center text-3xl font-bold">
+                  <span>{quantity}</span>
+                </div>
+                <Button
+                  onClick={quantityInc}
+                  className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+                >
+                  <TiPlus className="text-3xl font-bold" />
+                </Button>
+              </div>
+              <div className="flex items-center gap-4">
+                <Button className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase">
+                  Buy Now
+                </Button>
+                <Button className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase">
+                  Add To Cart
+                </Button>
+                <Button
+                  onClick={handleLike}
+                  className="text-primary border-primary rounded-lg border-2 text-4xl font-bold"
+                >
+                  {isLiked ? <FaHeart /> : <FaRegHeart />}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
