@@ -8,7 +8,6 @@ import { Loader } from "./../../ui";
 import ProductReviews from "./ProductReviews.jsx";
 import RelatedProducts from "./RelatedProducts.jsx";
 import ShopActions from "./ShopActions.jsx";
-import SizeButtons from "./SizeButtons.jsx";
 import { useShopProducts } from "./useShopProducts.js";
 
 export default function ShopItem() {
@@ -75,7 +74,6 @@ export default function ShopItem() {
               <p className="text-gray-500">{product.description}</p>
             </div>
 
-            <SizeButtons product={product} />
             <ShopActions product={product} />
           </div>
         </div>
