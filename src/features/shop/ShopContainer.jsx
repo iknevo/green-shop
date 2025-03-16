@@ -39,17 +39,6 @@ export default function ShopContainer() {
     );
 
   if (productId) {
-    return (
-      <>
-        <BreadCrumbs>
-          <Link className="font-bold" to="/home">
-            Home
-          </Link>
-          <span>/</span>
-          <Link to="/shop">Shop</Link>
-        </BreadCrumbs>
-        <ShopItem />
-      </>
-    );
+    return <ShopItem />;
   }
 }

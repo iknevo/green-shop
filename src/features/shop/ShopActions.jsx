@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { TiMinus, TiPlus } from "react-icons/ti";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router";
+import {
+  addItem,
+  getCart,
+  getQuantityById,
+  removeItem,
+} from "../../redux/cartSlice";
 import { Button } from "../../ui";
 
 /* eslint-disable react/prop-types */
@@ -9,6 +17,11 @@ export default function ShopActions({ product }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [quantity, setQuantity] = useState(+searchParams.get("quantity") || 1);
   const [isLiked, setIsLiked] = useState(false);
+  const currentQuantity = useSelector(getQuantityById(product.id));
+  const isInCart = currentQuantity > 0;
+  const dispatch = useDispatch();
+  const cart = useSelector(getCart);
+  const size = searchParams.get("size") || product.sizes.at(0);
 
   useEffect(() => {
     searchParams.set("quantity", quantity);
@@ -31,45 +44,101 @@ export default function ShopActions({ product }) {
     setIsLiked((liked) => !liked);
   }
 
+  function handleAddToCart() {
+    const newItem = {
+      id: product.id,
+      name: product.name,
+      sku: product.sku,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      quantity,
+      total: product.price * quantity,
+      size,
+    };
+    if (isInCart) return;
+    dispatch(addItem(newItem));
+  }
+
+  function handleRemoveFromCart() {
+    if (isInCart) {
+      console.log("remove");
+      console.log(product.id);
+      dispatch(removeItem(product.id));
+
+      console.log(cart);
+    }
+  }
+  // if (isInCart)
+
+  //   return (
+  //     <div className="py-8">
+  //       <Button
+  //         onClick={handleRemoveFromCart}
+  //         className="bg-primary border-primary gap-4 rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
+  //       >
+  //         <span>Remove from cart</span>
+  //         <RiDeleteBin6Line />
+  //       </Button>
+  //     </div>
+  //   );
+
   return (
     <div className="pt-8">
       <p className="text-3xl font-bold text-gray-600">
         {product.inStock} items available in stock.
       </p>
       <div className="py-8">
-        <div className="flex items-center gap-12">
-          <div className="flex items-center gap-6">
+        {/*  */}
+        {isInCart ? (
+          <div>
             <Button
-              onClick={quantityDec}
-              className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+              onClick={handleRemoveFromCart}
+              className="bg-primary border-primary gap-4 rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
             >
-              <TiMinus className="text-3xl font-bold" />
+              <span>Remove from cart</span>
+              <RiDeleteBin6Line />
             </Button>
-            <div className="flex w-5 justify-center text-3xl font-bold">
-              <span>{quantity}</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-12">
+            <div className="flex items-center gap-6">
+              <Button
+                onClick={quantityDec}
+                className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+              >
+                <TiMinus className="text-3xl font-bold" />
+              </Button>
+              <div className="flex w-5 justify-center text-3xl font-bold">
+                <span>{quantity}</span>
+              </div>
+              <Button
+                onClick={quantityInc}
+                className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+              >
+                <TiPlus className="text-3xl font-bold" />
+              </Button>
             </div>
-            <Button
-              onClick={quantityInc}
-              className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
-            >
-              <TiPlus className="text-3xl font-bold" />
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase">
+                Buy Now
+              </Button>
+              <Button
+                onClick={handleAddToCart}
+                className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
+              >
+                Add To Cart
+              </Button>
+
+              <Button
+                onClick={handleLike}
+                className="text-primary border-primary rounded-lg border-2 text-4xl font-bold"
+              >
+                {isLiked ? <FaHeart /> : <FaRegHeart />}
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Button className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase">
-              Buy Now
-            </Button>
-            <Button className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase">
-              Add To Cart
-            </Button>
-            <Button
-              onClick={handleLike}
-              className="text-primary border-primary rounded-lg border-2 text-4xl font-bold"
-            >
-              {isLiked ? <FaHeart /> : <FaRegHeart />}
-            </Button>
-          </div>
-        </div>
+        )}
+        {/*  */}
       </div>
       <div className="flex flex-col gap-4 py-8 font-semibold">
         {product.sku && <span>{product.sku}</span>}
