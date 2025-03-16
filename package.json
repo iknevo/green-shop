@@ -19,7 +19,6 @@
     "@tanstack/react-query-devtools": "^5.66.0",
     "ldrs": "^1.0.2",
     "lenis": "^1.2.3",
-    "motion": "^12.5.0",
     "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

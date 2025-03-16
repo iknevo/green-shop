@@ -19,7 +19,6 @@ export default function ShopItem() {
     return <Error text={error.message} />;
   }
   if (isLoadingProduct || isLoadingProducts) return <Loader />;
-
   const discountPercentage =
     Math.round((product.discount / (product.price + product.discount)) * 100) +
     "%";
@@ -38,7 +37,6 @@ export default function ShopItem() {
           <div className="flex flex-col gap-4 border-b-1 border-gray-300 pb-4">
             <h2 className="flex items-center gap-8 text-5xl font-bold">
               <span>{product.name}</span>
-
               {product.discount > 0 && (
                 <span className="text-primary text-3xl font-semibold uppercase">
                   {discountPercentage} Off
@@ -50,7 +48,6 @@ export default function ShopItem() {
                 <span className="text-primary text-4xl font-bold">
                   {formatCurrency(product.price)}
                 </span>
-
                 {product.discount > 0 && (
                   <span className="text-grey-light-2 text-3xl font-semibold line-through">
                     {formatCurrency(product.price + product.discount)}
