@@ -23,7 +23,7 @@ export default function ShopContainer() {
             Home
           </Link>
           <span>/</span>
-          <Link to="/shop">Shop</Link>
+          <span>Shop</span>
         </BreadCrumbs>
 
         <h2 className="text-primary mt-10 text-center text-9xl font-bold tracking-wider uppercase">

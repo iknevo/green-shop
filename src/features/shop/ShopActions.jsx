@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import toast from "react-hot-toast";
 import {
   HiMiniMinusCircle,
   HiMiniPlusCircle,
@@ -8,8 +8,12 @@ import {
   HiShoppingCart,
 } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router";
-import { addItem, getQuantityById, removeItem } from "../../redux/cartSlice";
+import { useNavigate, useSearchParams } from "react-router";
+import {
+  addItem,
+  getQuantityById,
+  removeItem,
+} from "../../redux/slices/cartSlice";
 import { Button } from "../../ui";
 import SizeButton from "./SizeButton";
 
@@ -23,10 +27,10 @@ export default function ShopActions({ product }) {
         ? "S"
         : product.sizes.at(0),
   );
-  const [isLiked, setIsLiked] = useState(false);
   const currentQuantity = useSelector(getQuantityById(product.id));
   const isInCart = currentQuantity > 0;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     searchParams.set("quantity", quantity);
@@ -50,10 +54,6 @@ export default function ShopActions({ product }) {
     }
   }
 
-  function handleLike() {
-    setIsLiked((liked) => !liked);
-  }
-
   function handleAddToCart() {
     const newItem = {
       id: product.id,
@@ -64,16 +64,44 @@ export default function ShopActions({ product }) {
       quantity,
       total: product.price * quantity,
       size,
+      inStock: product.inStock,
     };
     if (isInCart) return;
     dispatch(addItem(newItem));
+    toast.success("Added to cart");
   }
 
   function handleRemoveFromCart() {
     if (isInCart) {
       dispatch(removeItem(product.id));
+      toast.success("Removed from cart");
     }
   }
+
+  if (isInCart)
+    return (
+      <div className="py-8">
+        <span className="text-primary mb-6 block text-4xl font-semibold">
+          Added to cart
+        </span>
+        <div className="flex items-center gap-4">
+          <Button
+            onClick={() => navigate("/shop/cart")}
+            className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
+          >
+            <span>Go to cart</span>
+            <HiShoppingCart className="text-3xl" />
+          </Button>
+          <Button
+            onClick={handleRemoveFromCart}
+            className="gap-4 rounded-lg border-2 border-red-900 bg-red-900 px-12 py-4 font-semibold text-white uppercase"
+          >
+            <span>Remove from cart</span>
+            <HiOutlineTrash className="text-3xl" />
+          </Button>
+        </div>
+      </div>
+    );
 
   return (
     <>
@@ -116,7 +144,10 @@ export default function ShopActions({ product }) {
         <div className="py-8">
           {isInCart ? (
             <div className="flex items-center gap-4">
-              <Button className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase">
+              <Button
+                onClick={() => navigate("/shop/cart")}
+                className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
+              >
                 <span>Go to cart</span>
                 <HiShoppingCart className="text-3xl" />
               </Button>
@@ -158,13 +189,6 @@ export default function ShopActions({ product }) {
                   className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
                 >
                   Add To Cart
-                </Button>
-
-                <Button
-                  onClick={handleLike}
-                  className="text-primary border-primary rounded-lg border-2 text-4xl font-bold"
-                >
-                  {isLiked ? <FaHeart /> : <FaRegHeart />}
                 </Button>
               </div>
             </div>

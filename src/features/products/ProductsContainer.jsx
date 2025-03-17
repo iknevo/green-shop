@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router";
-import Empry from "../../components/Empry";
+import Empty from "../../components/Empty";
 import ProductsFilter from "../../components/ProductsFilter";
 import Loader from "../../ui/Loader";
 import Pagination from "../../ui/Pagination";
@@ -19,7 +19,7 @@ export default function ProductsContainer() {
       ? products
       : products?.filter((product) => product.sizes.includes(sizeValue));
 
-  if (!displayProducts?.length) return <Empry resourceName="products" />;
+  if (!displayProducts?.length) return <Empty resourceName="products" />;
   return (
     <>
       <div className="col-span-3 grid grid-cols-3 gap-x-16 gap-y-30">

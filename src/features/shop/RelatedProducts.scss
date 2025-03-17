@@ -1,0 +1,13 @@
+@reference './../../main.css';
+
+.item {
+  position: relative;
+  &::before {
+    @apply bg-primary absolute top-0 left-1/2 h-[2px] w-0 -translate-x-1/2 transition-all duration-300 content-[""];
+  }
+  &:hover {
+    &::before {
+      @apply w-[80%];
+    }
+  }
+}

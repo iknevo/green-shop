@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
+import Cart from "./features/cart/Cart";
 import { DefaultLayout } from "./layouts";
 import { Home, Shop } from "./pages";
 import Blogs from "./pages/Blogs";
@@ -22,6 +23,10 @@ const myRouter = createBrowserRouter([
       {
         path: "shop/:productId",
         element: <Shop />,
+      },
+      {
+        path: "shop/cart",
+        element: <Cart />,
       },
       {
         path: "blogs",

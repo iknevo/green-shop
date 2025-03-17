@@ -17,9 +17,9 @@ export default function App() {
       <ReactLenis root options={{ duration: 1 }}>
         <RouterProvider router={myRouter} />
         <Toaster
-          position="top-center"
+          position="top-left"
           gutter={12}
-          containerStyle={{ margin: "8px" }}
+          containerStyle={{ marginLeft: "50px" }}
           toastOptions={{
             success: {
               duration: 3 * 1000,
@@ -29,7 +29,7 @@ export default function App() {
             },
             style: {
               fontSize: "16px",
-              maxWidth: "500px",
+              maxWidth: "700px",
               padding: "16px 24px",
               backgroundColor: "var(--color-grey-light)",
               color: "var(--color-grey-dark)",

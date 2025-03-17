@@ -1,4 +1,7 @@
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { getQuantityById, removeItem } from "../../redux/slices/cartSlice";
 import Button from "../../ui/buttons/Button";
 import { formatCurrency } from "../../utils/helpers";
 import "./ProductItem.scss";
@@ -9,9 +12,17 @@ export default function ProductItem({ product }) {
   const oldPrice = price + discount;
   const hasDiscount = discount > 0;
   const discountPercentage = Math.round((discount / oldPrice) * 100) + "%";
+  const dispatch = useDispatch();
+  const currentQuantity = useSelector(getQuantityById(product.id));
+  const isInCart = currentQuantity > 0;
 
-  function handleAddToCart() {
-    navigate(`/shop/${product.id}`);
+  function handleCart() {
+    if (isInCart) {
+      dispatch(removeItem(product.id));
+      toast.success("item deleted");
+    } else if (!isInCart) {
+      navigate(`/shop/${product.id}`);
+    }
   }
 
   return (
@@ -50,11 +61,11 @@ export default function ProductItem({ product }) {
         </div>
       </div>
       <Button
-        onClick={handleAddToCart}
+        onClick={handleCart}
         propagation={false}
-        className="bg-primary hover:bg-primary-light-1 absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-b-md py-4 text-white transition-all duration-300 group-hover:bottom-0"
+        className={`${isInCart ? "bg-red-800 hover:bg-red-700" : "bg-primary hover:bg-primary-light-1"} absolute -bottom-full left-1/2 w-full -translate-x-1/2 rounded-b-md py-4 font-semibold text-white transition-all duration-300 group-hover:bottom-0`}
       >
-        Order now
+        {isInCart ? "Remove from cart" : "Order now"}
       </Button>
     </div>
   );

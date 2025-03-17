@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { BsArrow90DegLeft } from "react-icons/bs";
 export default function ProductReviews({ reviews }) {
   return (
     <div className="py-12">
@@ -11,7 +12,10 @@ export default function ProductReviews({ reviews }) {
             <h4 className="text-3xl font-bold text-gray-500">
               {i + 1}. {review.name}
             </h4>
-            <p className="pl-8 font-semibold">{review.review}</p>
+            <p className="flex gap-4 pl-10 font-semibold">
+              <BsArrow90DegLeft className="rotate-180 text-3xl" />
+              <span>{review.review}</span>
+            </p>
           </div>
         ))}
       </div>

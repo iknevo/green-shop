@@ -32,7 +32,7 @@ export default function ShopItem() {
         <span>/</span>
         <Link to="/shop">Shop</Link>
         <span>/</span>
-        <Link>{product.name}</Link>
+        <span>{product.name}</span>
       </BreadCrumbs>
       <div>
         <div className="grid grid-cols-2 items-start py-12">
