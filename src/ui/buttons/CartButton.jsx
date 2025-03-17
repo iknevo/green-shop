@@ -1,6 +1,6 @@
+import { HiShoppingCart } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import { getCart } from "../../redux/cartSlice";
-import { CartIcon } from "../icons";
 
 export default function CartButton() {
   const cart = useSelector(getCart);
@@ -13,7 +13,7 @@ export default function CartButton() {
             {cart.length}
           </span>
         )}
-        <CartIcon />
+        <HiShoppingCart className="text-primary text-5xl" />
       </button>
     </div>
   );

@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { TiMinus, TiPlus } from "react-icons/ti";
+import {
+  HiMiniMinusCircle,
+  HiMiniPlusCircle,
+  HiOutlineTrash,
+  HiShoppingCart,
+} from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router";
 import { addItem, getQuantityById, removeItem } from "../../redux/cartSlice";
@@ -81,25 +85,25 @@ export default function ShopActions({ product }) {
           <SizeButton
             size="S"
             active={size === "S"}
-            disabled={!product.sizes.includes("S")}
+            disabled={!product.sizes.includes("S") || isInCart}
             onClick={handleSelectSize}
           />
           <SizeButton
             size="M"
             active={size === "M"}
-            disabled={!product.sizes.includes("M")}
+            disabled={!product.sizes.includes("M") || isInCart}
             onClick={handleSelectSize}
           />
           <SizeButton
             size="L"
             active={size === "L"}
-            disabled={!product.sizes.includes("L")}
+            disabled={!product.sizes.includes("L") || isInCart}
             onClick={handleSelectSize}
           />
           <SizeButton
             size="XL"
             active={size === "XL"}
-            disabled={!product.sizes.includes("XL")}
+            disabled={!product.sizes.includes("XL") || isInCart}
             onClick={handleSelectSize}
           />
         </div>
@@ -110,35 +114,40 @@ export default function ShopActions({ product }) {
           {product.inStock} items available in stock.
         </p>
         <div className="py-8">
-          {/*  */}
           {isInCart ? (
-            <div>
+            <div className="flex items-center gap-4">
+              <Button className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase">
+                <span>Go to cart</span>
+                <HiShoppingCart className="text-3xl" />
+              </Button>
               <Button
                 onClick={handleRemoveFromCart}
                 className="bg-primary border-primary gap-4 rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
               >
                 <span>Remove from cart</span>
-                <RiDeleteBin6Line />
+                <HiOutlineTrash className="text-3xl" />
               </Button>
             </div>
           ) : (
             <div className="flex items-center gap-12">
               <div className="flex items-center gap-6">
-                <Button
+                <button
                   onClick={quantityDec}
-                  className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+                  disabled={quantity === 1}
+                  className="cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <TiMinus className="text-3xl font-bold" />
-                </Button>
-                <div className="flex w-5 justify-center text-3xl font-bold">
+                  <HiMiniMinusCircle className="text-primary text-6xl" />
+                </button>
+                <div className="flex w-5 justify-center text-4xl font-bold">
                   <span>{quantity}</span>
                 </div>
-                <Button
+                <button
                   onClick={quantityInc}
-                  className="bg-primary aspect-square w-14 rounded-full leading-0 text-white"
+                  disabled={quantity === product.inStock}
+                  className="cursor-pointer disabled:cursor-not-allowed"
                 >
-                  <TiPlus className="text-3xl font-bold" />
-                </Button>
+                  <HiMiniPlusCircle className="text-primary text-6xl" />
+                </button>
               </div>
               <div className="flex items-center gap-4">
                 <Button className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase">
@@ -160,7 +169,6 @@ export default function ShopActions({ product }) {
               </div>
             </div>
           )}
-          {/*  */}
         </div>
         <div className="flex flex-col gap-4 py-8 font-semibold">
           {product.sku && <span>{product.sku}</span>}
