@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { getCart } from "../../redux/slices/cartSlice";
 import { Button, Loader } from "../../ui";
 import BreadCrumbs from "../../ui/BreadCrumbs";
+import Modal from "../../ui/Modal.jsx";
 import { useShopProducts } from "../shop/useShopProducts.js";
 import RelatedProducts from "./../shop/RelatedProducts.jsx";
 import CartList from "./CartList.jsx";
@@ -42,6 +43,25 @@ export default function Cart() {
 
   return (
     <div className="py-8">
+      <Modal>
+        <Modal.Open opens="test">
+          <button>modal</button>
+        </Modal.Open>
+        <Modal.Window name="test">
+          <span>ahmed</span>
+        </Modal.Window>
+      </Modal>
+
+      <Modal>
+        <Modal.Open opens="example">
+          <button>Open Modal</button>
+        </Modal.Open>
+
+        <Modal.Window name="example">
+          <div>Modal Content</div>
+        </Modal.Window>
+      </Modal>
+
       <BreadCrumbs>
         <Link className="font-bold" to="/home">
           Home
