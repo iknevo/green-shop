@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import supabase from "./supabase";
 
 export async function getCoupon(coupon) {
@@ -10,7 +9,6 @@ export async function getCoupon(coupon) {
 
   if (error) {
     console.error(error);
-    toast.error("Invalid Coupon!");
     throw new Error(
       "There was an error while getting this coupon, Please try again later!",
     );

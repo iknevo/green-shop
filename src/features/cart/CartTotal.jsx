@@ -13,7 +13,11 @@ export default function CartTotal() {
 
   const shippingCost = 30;
   const [couponCode, setCouponCode] = useState("");
-  const { coupon, isLoading: isLoadingDiscount } = useCoupon(couponCode);
+  const {
+    coupon,
+    isLoading: isLoadingDiscount,
+    error: couponError,
+  } = useCoupon(couponCode);
   const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
@@ -38,7 +42,7 @@ export default function CartTotal() {
         <p className="mb-2 text-gray-400">Coupon</p>
         <form
           onSubmit={handleApplyCoupon}
-          className="focus-within:ring-primary mb-9 rounded-lg transition-all duration-300 focus-within:ring-1"
+          className="focus-within:ring-primary mb-5 rounded-lg transition-all duration-300 focus-within:ring-1"
         >
           <div className="border-primary flex overflow-hidden rounded-lg border-1">
             <input
@@ -55,6 +59,12 @@ export default function CartTotal() {
             </Button>
           </div>
         </form>
+        {couponError && (
+          <p className="mb-9 text-center text-3xl text-red-500">
+            Invalid Coupon!
+          </p>
+        )}
+
         <div className="flex flex-col gap-4 px-4">
           <div className="flex justify-between">
             <span className="font-semibold text-gray-500">Subtotal</span>
