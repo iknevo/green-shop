@@ -7,7 +7,7 @@ import myRouter from "./Routes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { staleTime: 0 },
+    queries: { staleTime: 5000 },
   },
 });
 
