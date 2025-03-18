@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 import { getTotalCartPrice } from "../../redux/slices/cartSlice";
-import Button from "../../ui/buttons/Button";
+import { Button } from "../../ui";
 import LoaderMini from "../../ui/LoaderMini";
 import { formatCurrency } from "../../utils/helpers";
 import { useCoupon } from "./useCoupon";
@@ -78,6 +79,15 @@ export default function CartTotal() {
             <span className="text-primary text-3xl font-semibold">
               {formatCurrency(totalCartPrice + shippingCost - discount)}
             </span>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-6 text-center">
+            <Button className="bg-primary rounded-lg py-6 font-semibold text-white">
+              Proceed To Checkout
+            </Button>
+            <Link to="/shop" className="text-primary text-3xl font-semibold">
+              Continue Shopping
+            </Link>
           </div>
         </div>
       </div>
