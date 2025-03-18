@@ -5,7 +5,8 @@ import { Button, Loader } from "../../ui";
 import BreadCrumbs from "../../ui/BreadCrumbs";
 import { useShopProducts } from "../shop/useShopProducts.js";
 import RelatedProducts from "./../shop/RelatedProducts.jsx";
-import CartItem from "./CartItem";
+import CartList from "./CartList.jsx";
+import CartTotal from "./CartTotal.jsx";
 
 export default function Cart() {
   const { shopProducts, isLoading: isLoadingProducts } = useShopProducts();
@@ -38,6 +39,7 @@ export default function Cart() {
         </div>
       </div>
     );
+
   return (
     <div className="py-8">
       <BreadCrumbs>
@@ -49,23 +51,9 @@ export default function Cart() {
         <span>/</span>
         <span>Shopping Cart</span>
       </BreadCrumbs>
-      <div className="grid grid-cols-[2fr_1fr] gap-x-16 py-16">
-        <div className="">
-          <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr]">
-            <div className="col-span-full grid grid-cols-subgrid border-b-1 border-gray-200 py-2 font-semibold">
-              <span className="col-span-2">Products</span>
-              <span>Price</span>
-              <span>Quantity</span>
-              <span>Total</span>
-            </div>
-            <div className="col-span-full mt-4 grid grid-cols-subgrid gap-y-4">
-              {cart.map((item) => (
-                <CartItem product={item} key={item.id} />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="bg-blue-500">s</div>
+      <div className="grid grid-cols-[2fr_1fr] items-start gap-x-30 py-16">
+        <CartList cart={cart} />
+        <CartTotal />
       </div>
       <div className="py-16">
         {isLoadingProducts ? (
