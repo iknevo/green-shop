@@ -6,7 +6,7 @@ import { Button } from "../../ui";
 import { formatCurrency } from "../../utils/helpers";
 import "./RelatedProducts.scss";
 
-export default function RelatedProducts({ shopProducts, currentProduct }) {
+export default function RelatedProducts({ products, currentProduct }) {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -25,11 +25,11 @@ export default function RelatedProducts({ shopProducts, currentProduct }) {
         ref={scrollRef}
         className="flex flex-nowrap items-center gap-4 overflow-hidden scroll-smooth pt-20"
       >
-        {shopProducts.map((item) => (
+        {products.map((item) => (
           <div
             onClick={() => navigate(`/shop/${item.id}`)}
             key={item.id}
-            className={`${item.id === currentProduct.id ? "cursor-not-allowed" : "cursor-pointer"} item grid w-[350px] shrink-0 grid-rows-[85%_15%] items-center justify-center self-stretch`}
+            className={`${item.id === currentProduct?.id ? "cursor-not-allowed" : "cursor-pointer"} item grid w-[350px] shrink-0 grid-rows-[85%_15%] items-center justify-center self-stretch`}
           >
             <img src={item.imageUrl} alt={`${item.name} image`} />
             <div className="text-center">
@@ -50,7 +50,7 @@ export default function RelatedProducts({ shopProducts, currentProduct }) {
           <FaArrowLeftLong />
         </Button>
         <Button
-          disabled={scrollPosition === (shopProducts.length - 4) * 350}
+          disabled={scrollPosition === (products.length - 4) * 350}
           className="bg-primary rounded-md px-6 py-2 text-4xl text-white"
           onClick={() => handleScroll(350)}
         >

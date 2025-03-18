@@ -17,7 +17,7 @@ export default function App() {
       <ReactLenis root options={{ duration: 1 }}>
         <RouterProvider router={myRouter} />
         <Toaster
-          position="top-left"
+          position="top-center"
           gutter={12}
           containerStyle={{ marginLeft: "50px" }}
           toastOptions={{

@@ -1,11 +1,14 @@
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { getCart } from "../../redux/slices/cartSlice";
-import { Button } from "../../ui";
+import { Button, Loader } from "../../ui";
 import BreadCrumbs from "../../ui/BreadCrumbs";
+import { useShopProducts } from "../shop/useShopProducts.js";
+import RelatedProducts from "./../shop/RelatedProducts.jsx";
 import CartItem from "./CartItem";
 
 export default function Cart() {
+  const { shopProducts, isLoading: isLoadingProducts } = useShopProducts();
   const cart = useSelector(getCart);
   const navigate = useNavigate();
   console.log(cart);
@@ -63,6 +66,13 @@ export default function Cart() {
           </div>
         </div>
         <div className="bg-blue-500">s</div>
+      </div>
+      <div className="py-16">
+        {isLoadingProducts ? (
+          <Loader />
+        ) : (
+          <RelatedProducts products={shopProducts} />
+        )}
       </div>
     </div>
   );

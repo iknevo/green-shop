@@ -142,57 +142,35 @@ export default function ShopActions({ product }) {
           {product.inStock} items available in stock.
         </p>
         <div className="py-8">
-          {isInCart ? (
+          <div className="flex items-center gap-12">
+            <div className="flex items-center gap-6">
+              <button
+                onClick={quantityDec}
+                disabled={quantity === 1}
+                className="cursor-pointer disabled:cursor-not-allowed"
+              >
+                <HiMiniMinusCircle className="text-primary text-6xl" />
+              </button>
+              <div className="flex w-5 justify-center text-4xl font-bold">
+                <span>{quantity}</span>
+              </div>
+              <button
+                onClick={quantityInc}
+                disabled={quantity === product.inStock}
+                className="cursor-pointer disabled:cursor-not-allowed"
+              >
+                <HiMiniPlusCircle className="text-primary text-6xl" />
+              </button>
+            </div>
             <div className="flex items-center gap-4">
               <Button
-                onClick={() => navigate("/shop/cart")}
-                className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
+                onClick={handleAddToCart}
+                className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
               >
-                <span>Go to cart</span>
-                <HiShoppingCart className="text-3xl" />
-              </Button>
-              <Button
-                onClick={handleRemoveFromCart}
-                className="bg-primary border-primary gap-4 rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
-              >
-                <span>Remove from cart</span>
-                <HiOutlineTrash className="text-3xl" />
+                Add To Cart
               </Button>
             </div>
-          ) : (
-            <div className="flex items-center gap-12">
-              <div className="flex items-center gap-6">
-                <button
-                  onClick={quantityDec}
-                  disabled={quantity === 1}
-                  className="cursor-pointer disabled:cursor-not-allowed"
-                >
-                  <HiMiniMinusCircle className="text-primary text-6xl" />
-                </button>
-                <div className="flex w-5 justify-center text-4xl font-bold">
-                  <span>{quantity}</span>
-                </div>
-                <button
-                  onClick={quantityInc}
-                  disabled={quantity === product.inStock}
-                  className="cursor-pointer disabled:cursor-not-allowed"
-                >
-                  <HiMiniPlusCircle className="text-primary text-6xl" />
-                </button>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button className="bg-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase">
-                  Buy Now
-                </Button>
-                <Button
-                  onClick={handleAddToCart}
-                  className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
-                >
-                  Add To Cart
-                </Button>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
         <div className="flex flex-col gap-4 py-8 font-semibold">
           {product.sku && <span>{product.sku}</span>}

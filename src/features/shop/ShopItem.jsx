@@ -78,7 +78,7 @@ export default function ShopItem() {
           </div>
         </div>
         <ProductReviews reviews={product.reviews} />
-        <RelatedProducts shopProducts={shopProducts} currentProduct={product} />
+        <RelatedProducts products={shopProducts} currentProduct={product} />
       </div>
     </>
   );
