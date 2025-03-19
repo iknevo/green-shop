@@ -1,4 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
+import Auth from "./features/authentication/Auth";
+import Login from "./features/authentication/Login";
+import SignUp from "./features/authentication/SignUp";
 import Cart from "./features/cart/Cart";
 import { DefaultLayout } from "./layouts";
 import { Home, Shop } from "./pages";
@@ -15,6 +18,24 @@ const myRouter = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "home/auth",
+        element: <Auth />,
+        children: [
+          {
+            index: true,
+            element: <Navigate to="login" replace />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+          {
+            path: "signup",
+            element: <SignUp />,
+          },
+        ],
       },
       {
         path: "shop",
