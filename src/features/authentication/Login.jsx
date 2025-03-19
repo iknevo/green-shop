@@ -83,7 +83,7 @@ export default function Login({ onCloseModal }) {
             },
           }}
           endAdornment={
-            <InputAdornment position="end">
+            <InputAdornment position="end" sx={{ marginRight: "1rem" }}>
               <IconButton
                 aria-label={
                   showPassword ? "hide the password" : "display the password"
@@ -93,7 +93,11 @@ export default function Login({ onCloseModal }) {
                 // onMouseUp={handleMouseUpPassword}
                 edge="end"
               >
-                {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                {showPassword ? (
+                  <FaRegEye className="text-4xl" />
+                ) : (
+                  <FaRegEyeSlash className="text-4xl" />
+                )}
               </IconButton>
             </InputAdornment>
           }
@@ -106,6 +110,7 @@ export default function Login({ onCloseModal }) {
       >
         Forgot Password?
       </button>
+
       <Button className="bg-primary mt-10 rounded-md py-6 text-3xl font-semibold text-white">
         {isPending ? <LoaderMini /> : "Login"}
       </Button>
