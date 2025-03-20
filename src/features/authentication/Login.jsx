@@ -49,8 +49,9 @@ export default function Login({ onCloseModal }) {
           Email
         </InputLabel>
         <OutlinedInput
+          required
           id="email"
-          type="text"
+          type="email"
           onChange={(e) => setEmail(e.target.value)}
           label="Email"
           sx={{
@@ -71,8 +72,8 @@ export default function Login({ onCloseModal }) {
         >
           Password
         </InputLabel>
-
         <OutlinedInput
+          required
           id="password"
           type={showPassword ? "text" : "password"}
           onChange={(e) => setPassword(e.target.value)}

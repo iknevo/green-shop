@@ -1,11 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import { getCurrentUser } from "../../services/apiAuth";
+import { useEffect, useState } from "react";
+import supabase from "../../services/supabase";
 
 export function useUser() {
-  const { data: user, isLoading } = useQuery({
-    queryFn: getCurrentUser,
-    queryKey: ["user"],
-  });
+  const [session, setSession] = useState(null);
 
-  return { user, isLoading };
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+  console.log(session);
 }

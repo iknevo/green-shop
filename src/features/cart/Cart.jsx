@@ -12,8 +12,6 @@ export default function Cart() {
   const { shopProducts, isLoading: isLoadingProducts } = useShopProducts();
   const cart = useSelector(getCart);
   const navigate = useNavigate();
-  console.log(cart);
-
   if (!cart.length)
     return (
       <div className="py-8">

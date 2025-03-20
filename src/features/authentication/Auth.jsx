@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import Button from "../../ui/buttons/Button";
-import LoaderMini from "../../ui/LoaderMini";
 import "./Auth.scss";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -11,10 +10,10 @@ import { useFacebookLogin } from "./useFacebookLogin";
 import { useGoogleLogin } from "./useGoogleLogin";
 
 export default function Auth({ onCloseModal }) {
+  const { googleLogin } = useGoogleLogin();
+  const { facebookLogin } = useFacebookLogin();
   const [form, setForm] = useState("login");
-  const { googleLogin, isPending: isLogingInGoogle } = useGoogleLogin();
-  const { facebookLogin, isPendign: isLogingInFacebook } = useFacebookLogin();
-  const isPending = isLogingInGoogle || isLogingInFacebook;
+
   return (
     <div className="relative flex w-[400px] flex-col items-center pt-10">
       <div className="mb-20 flex gap-4 text-4xl font-semibold">
@@ -46,18 +45,14 @@ export default function Auth({ onCloseModal }) {
             onClick={googleLogin}
             className="flex items-center gap-2 rounded-md border-1 border-gray-300 py-4 font-semibold"
           >
-            {isPending ? <LoaderMini /> : <FcGoogle className="text-4xl" />}
+            <FcGoogle className="text-4xl" />
             <span>Continue With Google</span>
           </Button>
           <Button
             onClick={facebookLogin}
             className="flex items-center gap-2 rounded-md border-1 border-gray-300 p-4 font-semibold"
           >
-            {isPending ? (
-              <LoaderMini />
-            ) : (
-              <FaFacebookF className="text-4xl text-[#1877f2]" />
-            )}
+            <FaFacebookF className="text-4xl text-[#1877f2]" />
             <span>Continue With Facebook</span>
           </Button>
         </div>

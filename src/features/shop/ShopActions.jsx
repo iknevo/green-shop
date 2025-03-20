@@ -4,16 +4,12 @@ import toast from "react-hot-toast";
 import {
   HiMiniMinusCircle,
   HiMiniPlusCircle,
-  HiOutlineTrash,
   HiShoppingCart,
 } from "react-icons/hi2";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
-import {
-  addItem,
-  getQuantityById,
-  removeItem,
-} from "../../redux/slices/cartSlice";
+import { addItem, getQuantityById } from "../../redux/slices/cartSlice";
 import { Button } from "../../ui";
 import SizeButton from "./SizeButton";
 
@@ -71,13 +67,6 @@ export default function ShopActions({ product }) {
     toast.success("Added to cart");
   }
 
-  function handleRemoveFromCart() {
-    if (isInCart) {
-      dispatch(removeItem(product.id));
-      toast.success("Removed from cart");
-    }
-  }
-
   if (isInCart)
     return (
       <div className="py-8">
@@ -86,18 +75,18 @@ export default function ShopActions({ product }) {
         </span>
         <div className="flex items-center gap-4">
           <Button
+            onClick={() => navigate("/shop")}
+            className="border-primar bg-primary gap-4 rounded-lg border-2 px-12 py-4 font-semibold text-white uppercase"
+          >
+            <span>Continue Shopping</span>
+            <MdOutlineAddShoppingCart className="text-3xl" />
+          </Button>
+          <Button
             onClick={() => navigate("/shop/cart")}
             className="text-primary border-primary rounded-lg border-2 px-12 py-4 font-semibold uppercase"
           >
             <span>Go to cart</span>
             <HiShoppingCart className="text-3xl" />
-          </Button>
-          <Button
-            onClick={handleRemoveFromCart}
-            className="gap-4 rounded-lg border-2 border-red-900 bg-red-900 px-12 py-4 font-semibold text-white uppercase"
-          >
-            <span>Remove from cart</span>
-            <HiOutlineTrash className="text-3xl" />
           </Button>
         </div>
       </div>

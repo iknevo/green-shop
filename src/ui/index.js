@@ -1,5 +1,4 @@
 import Button from "./buttons/Button";
-import CartButton from "./buttons/CartButton";
 import LoginButton from "./buttons/LoginButton";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -11,7 +10,6 @@ import Loader from "./Loader";
 
 export {
   Button,
-  CartButton,
   Footer,
   Header,
   HeaderNav,

@@ -1,11 +1,21 @@
+import { useEffect } from "react";
 import { HiShoppingCart } from "react-icons/hi2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { getCart } from "../../redux/slices/cartSlice";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { getCart, setCart } from "../../redux/slices/cartSlice";
 
 export default function CartButton() {
-  const cart = useSelector(getCart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cart = useSelector(getCart);
+  const [, setStorageCart] = useLocalStorage([], "cart");
+
+  useEffect(() => {
+    dispatch(setCart(cart));
+    setStorageCart(cart);
+  }, [cart, dispatch, setStorageCart]);
+
   return (
     <button
       onClick={() => navigate("/shop/cart")}

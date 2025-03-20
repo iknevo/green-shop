@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import CartButton from "../../buttons/CartButton";
+import CartButton from "../../../features/cart/CartButton";
 import LoginButton from "../../buttons/LoginButton";
 import Logo from "../Logo";
 import HeaderButtons from "./HeaderButtons";

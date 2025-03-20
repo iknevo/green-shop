@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.6",
     "@reduxjs/toolkit": "^2.5.1",
-    "@supabase/supabase-js": "^2.48.1",
+    "@supabase/supabase-js": "^2.49.1",
     "@tailwindcss/postcss": "^4.0.6",
     "@tanstack/react-query-devtools": "^5.66.0",
     "ldrs": "^1.0.2",
