@@ -12,11 +12,9 @@ export async function login({ email, password }) {
 }
 
 export async function googleLogin() {
-  const redirectTo = `${window.location.origin}`;
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo,
       queryParams: {
         access_type: "offline",
         prompt: "consent",
