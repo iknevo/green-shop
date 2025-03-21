@@ -1,7 +1,7 @@
 import { Link } from "react-router";
+import UserAvatar from "../../../features/account/UserAvatar";
 import { useUser } from "../../../features/authentication/useUser";
 import CartButton from "../../../features/cart/CartButton";
-import UserAvatar from "../../../features/user/UserAvatar";
 import LoginButton from "../../buttons/LoginButton";
 import Loader2 from "../../Loader2";
 import Logo from "../Logo";

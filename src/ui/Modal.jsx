@@ -1,16 +1,26 @@
-import { cloneElement, createContext, useContext, useState } from "react";
+import { cloneElement, createContext, useContext } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
+import { useSearchParams } from "react-router";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 
 /* eslint-disable react/prop-types */
 const ModalContext = createContext();
 
 function Modal({ children }) {
-  const [openName, setOpenName] = useState("");
+  // const [openName, setOpenName] = useState("");
 
-  const close = () => setOpenName("");
-  const open = setOpenName;
+  // const close = () => setOpenName("");
+  // const open = setOpenName;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const openName = searchParams.get("modal") || "";
+
+  const close = () =>
+    setSearchParams((prev) => {
+      prev.delete("modal");
+    });
+
+  const open = (name) => setSearchParams({ modal: name });
 
   return (
     <ModalContext.Provider value={{ openName, close, open }}>

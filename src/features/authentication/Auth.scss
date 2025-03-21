@@ -1,7 +1,5 @@
 @reference "./../../main.css";
 .auth__or {
-  // position: relative;
-  // display: block;
   @apply relative block font-semibold text-gray-500 uppercase;
   &::before {
     @apply absolute top-1/2 left-0 h-[1px] w-[30%] bg-gray-300 content-[""];

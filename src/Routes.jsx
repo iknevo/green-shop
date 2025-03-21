@@ -1,11 +1,16 @@
 import { createBrowserRouter, Navigate } from "react-router";
+import AccountDetails from "./features/account/AccountDetails";
+import AccountOrders from "./features/account/AccountOrders";
+import AccountAddress from "./features/account/AccoutAddress.jsx";
 import Auth from "./features/authentication/Auth";
 import Login from "./features/authentication/Login";
 import SignUp from "./features/authentication/SignUp";
 import Cart from "./features/cart/Cart";
 import { DefaultLayout } from "./layouts";
 import { Home, Shop } from "./pages";
+import Account from "./pages/Account";
 import Blogs from "./pages/Blogs";
+import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 
 const myRouter = createBrowserRouter([
   {
@@ -52,6 +57,23 @@ const myRouter = createBrowserRouter([
       {
         path: "blogs",
         element: <Blogs />,
+      },
+      {
+        path: "account",
+        element: (
+          <ProtectedRoute>
+            <Account />,
+          </ProtectedRoute>
+        ),
+        children: [
+          {
+            element: <Navigate to="details" replace />,
+            index: true,
+          },
+          { path: "details", element: <AccountDetails /> },
+          { path: "orders", element: <AccountOrders /> },
+          { path: "address", element: <AccountAddress /> },
+        ],
       },
     ],
   },

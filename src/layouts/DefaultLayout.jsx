@@ -7,7 +7,9 @@ export default function DefaultLayout() {
     <div className="px-30">
       <ScrollToTop />
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
