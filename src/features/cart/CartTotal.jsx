@@ -21,15 +21,17 @@ export default function CartTotal() {
   const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
-    setDiscount(
-      coupon ? (totalCartPrice + shippingCost) * (coupon.value / 100) : 0,
-    );
+    if (coupon) {
+      setDiscount((totalCartPrice + shippingCost) * (coupon.value / 100));
+    } else if (!coupon) {
+      setDiscount(0);
+    }
   }, [coupon, totalCartPrice]);
 
   async function handleApplyCoupon(e) {
     e.preventDefault();
     const newCoupon = couponInputRef.current.value.trim();
-    if (!newCoupon) return;
+    if (!newCoupon) return setDiscount(0);
     setCouponCode(newCoupon);
   }
   return (
