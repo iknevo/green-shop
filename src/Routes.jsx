@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import AccountDetails from "./features/account/AccountDetails";
 import AccountOrders from "./features/account/AccountOrders";
+import AccountPassword from "./features/account/AccountPassword.jsx";
 import AccountAddress from "./features/account/AccoutAddress.jsx";
 import Auth from "./features/authentication/Auth";
 import Login from "./features/authentication/Login";
@@ -73,6 +74,7 @@ const myRouter = createBrowserRouter([
           { path: "details", element: <AccountDetails /> },
           { path: "orders", element: <AccountOrders /> },
           { path: "address", element: <AccountAddress /> },
+          { path: "password", element: <AccountPassword /> },
         ],
       },
     ],

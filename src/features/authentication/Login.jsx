@@ -19,7 +19,10 @@ export default function Login({ onCloseModal }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  function handleClickShowPassword() {
+    setShowPassword((show) => !show);
+  }
+
   function handleResetPassword(e) {
     e.preventDefault();
   }

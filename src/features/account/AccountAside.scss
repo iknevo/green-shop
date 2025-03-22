@@ -1,0 +1,34 @@
+@reference "./../../main.css";
+
+.account-aside {
+  @apply bg-grey-light pt-8 pb-4;
+  & ul {
+    @apply mb-4 flex flex-col gap-1 border-b-1 border-gray-200 pb-4;
+    & li {
+      @apply text-2xl font-semibold;
+      & svg {
+        width: 1.5em;
+        height: 1.5em;
+      }
+
+      & a {
+        @apply relative flex items-center gap-4 py-6 pl-8 transition-all duration-200 ease-linear;
+        &.active {
+          @apply text-primary bg-white;
+          &::after {
+            @apply h-full;
+          }
+        }
+
+        &::after {
+          @apply bg-primary absolute top-1/2 left-0 h-0 w-[3px] -translate-y-1/2 rounded-sm content-[""];
+          transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        &:hover {
+          @apply bg-white;
+        }
+      }
+    }
+  }
+}
