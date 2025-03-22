@@ -8,8 +8,8 @@ export function useLogout() {
   const { mutate: logout, isPending } = useMutation({
     mutationFn: logoutApi,
     onSuccess: () => {
+      queryClient.invalidateQueries(["user"]);
       navigate("/home", { replace: true });
-      queryClient.invalidateQueries({ queryKey: ["user"] });
     },
   });
   return { logout, isPending };

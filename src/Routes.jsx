@@ -62,7 +62,7 @@ const myRouter = createBrowserRouter([
         path: "account",
         element: (
           <ProtectedRoute>
-            <Account />,
+            <Account />
           </ProtectedRoute>
         ),
         children: [

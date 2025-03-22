@@ -1,17 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import { useSearchParams } from "react-router";
+import { useNavigate } from "react-router";
 import { useUser } from "../features/authentication/useUser";
 import Loader from "./Loader.jsx";
 
 export default function ProtectedRoute({ children }) {
-  const [, setSearchParams] = useSearchParams();
-  // 1. load the authenticated user
   const { isAuthenticated, isLoading } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated && !isLoading) setSearchParams({ modal: "login" });
-  }, [isAuthenticated, isLoading, setSearchParams]);
+    if (!isAuthenticated && !isLoading) navigate("/home", { replace: true });
+  }, [isAuthenticated, isLoading, navigate]);
 
   if (isLoading)
     return (
