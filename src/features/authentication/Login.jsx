@@ -12,12 +12,15 @@ import { useState } from "react";
 import Button from "../../ui/buttons/Button";
 import LoaderMini from "./../../ui/LoaderMini.jsx";
 import { useLogin } from "./useLogin";
+import { useResetPassword } from "./useResetPassword.js";
 
 export default function Login({ onCloseModal }) {
-  const { login, isPending } = useLogin();
+  const { login, isPending: isPending1 } = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { resetPassword, isPending: isPending2 } = useResetPassword();
+  const isPending = isPending1 || isPending2;
 
   function handleClickShowPassword() {
     setShowPassword((show) => !show);
@@ -25,6 +28,8 @@ export default function Login({ onCloseModal }) {
 
   function handleResetPassword(e) {
     e.preventDefault();
+    if (!email) return;
+    resetPassword(email);
   }
 
   function handleLogin(e) {
@@ -60,7 +65,7 @@ export default function Login({ onCloseModal }) {
           sx={{
             fontSize: "16px",
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#46a358", // Default border color
+              borderColor: "#46a358",
             },
           }}
         />
@@ -83,7 +88,7 @@ export default function Login({ onCloseModal }) {
           sx={{
             fontSize: "16px",
             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#46a358", // Default border color
+              borderColor: "#46a358",
             },
           }}
           endAdornment={
@@ -93,8 +98,6 @@ export default function Login({ onCloseModal }) {
                   showPassword ? "hide the password" : "display the password"
                 }
                 onClick={handleClickShowPassword}
-                // onMouseDown={handleMouseDownPassword}
-                // onMouseUp={handleMouseUpPassword}
                 edge="end"
               >
                 {showPassword ? (

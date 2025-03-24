@@ -16,13 +16,13 @@ export async function logout() {
   if (error) throw new Error(error.message);
 }
 
-export async function signup({ fullName, email, password }) {
+export async function signup({ full_name, email, password }) {
   let { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
-        fullName,
+        full_name,
         avatar: "",
       },
     },
@@ -62,7 +62,6 @@ export async function resetPassword(email) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email);
 
   if (error) throw new Error(error.message);
-  console.log(data);
   return data;
 }
 
