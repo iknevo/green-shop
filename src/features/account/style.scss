@@ -32,3 +32,6 @@
     }
   }
 }
+input::file-selector-button {
+  @apply text-primary hover:text-primary/80 mr-8 ml-4 cursor-pointer font-semibold;
+}

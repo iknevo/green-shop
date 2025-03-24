@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "../../ui";
 import LoaderMini from "../../ui/LoaderMini";
 import { useUser } from "../authentication/useUser";
+import "./style.scss";
 import { useUpdateUser } from "./useUpdateUser";
 
 export default function AccountDetails() {

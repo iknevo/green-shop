@@ -3,7 +3,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { NavLink } from "react-router";
 import Logout from "./../authentication/Logout.jsx";
-import "./AccountAside.scss";
+import "./style.scss";
 
 export default function AccountAside() {
   return (
