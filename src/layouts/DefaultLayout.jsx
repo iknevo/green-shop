@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
+import useScrollToTop from "../hooks/useScrollToTop";
 import { Footer, Header } from "../ui";
-import ScrollToTop from "../ui/components/ScrollToTop";
 
 export default function DefaultLayout() {
+  useScrollToTop();
   return (
     <div className="px-30">
-      <ScrollToTop />
       <Header />
       <main>
         <Outlet />

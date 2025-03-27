@@ -16,28 +16,36 @@ export default function PriceRange() {
   );
 
   useEffect(() => {
-    if (searchParams.get("minPrice"))
-      setMinPrice(+searchParams.get("minPrice"));
-    if (searchParams.get("maxPrice"))
-      setMaxPrice(+searchParams.get("maxPrice"));
+    const minPriceParam = searchParams.get("minPrice");
+    const maxPriceParam = searchParams.get("maxPrice");
+
+    if (minPriceParam) setMinPrice(+minPriceParam);
+    if (maxPriceParam) setMaxPrice(+maxPriceParam);
   }, [searchParams]);
 
   function handleChange(_, newValue) {
-    setMinPrice(newValue.at(0));
-    setMaxPrice(newValue.at(1));
+    setMinPrice(newValue[0]);
+    setMaxPrice(newValue[1]);
   }
 
   function handleFilter() {
-    searchParams.set("minPrice", minPrice);
-    setSearchParams(searchParams);
-    searchParams.set("maxPrice", maxPrice);
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("minPrice", minPrice);
+    newParams.set("maxPrice", maxPrice);
+
+    newParams.set("preventScroll", true);
+    setSearchParams(newParams);
   }
 
   function handleReset() {
-    searchParams.set("minPrice", PRODUCTS_MIN_PRICE);
-    searchParams.set("maxPrice", PRODUCTS_MAX_PRICE);
-    setSearchParams(searchParams);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("minPrice", PRODUCTS_MIN_PRICE);
+    newParams.set("maxPrice", PRODUCTS_MAX_PRICE);
+    newParams.set("preventScroll", true);
+    setSearchParams(newParams);
+
+    setMinPrice(PRODUCTS_MIN_PRICE);
+    setMaxPrice(PRODUCTS_MAX_PRICE);
   }
 
   function handlePrice(direction) {
@@ -49,6 +57,7 @@ export default function PriceRange() {
     }
   }
 
+  // The JSX return remains unchanged as requested
   return (
     <>
       <Box sx={{ width: 250, color: "#46a358" }}>
@@ -91,5 +100,5 @@ export default function PriceRange() {
 }
 
 function valuetext(value) {
-  return `price ${value}`;
+  return `$${value}`;
 }
