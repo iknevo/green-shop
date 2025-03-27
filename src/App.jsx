@@ -12,16 +12,13 @@ const queryClient = new QueryClient({
   },
 });
 
-// Lenis scroll configuration component
 function SmoothScrollConfig() {
   const lenis = useLenis();
 
   useEffect(() => {
-    // Stop scrolling when window is resized for better performance
     function handleResize() {
       if (lenis) lenis.stop();
 
-      // Resume scrolling after resize completes
       setTimeout(() => {
         if (lenis) lenis.start();
       }, 100);
@@ -44,8 +41,8 @@ export default function App() {
         root
         options={{
           duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Improved easing function
-          smoothTouch: false, // Disable on touch devices for better performance
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothTouch: false,
           touchMultiplier: 2,
           wheelMultiplier: 1.2,
           infinite: false,
