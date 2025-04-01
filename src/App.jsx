@@ -51,9 +51,9 @@ export default function App() {
         <SmoothScrollConfig />
         <RouterProvider router={myRouter} />
         <Toaster
-          position="top-center"
+          position="bottom-left"
           gutter={12}
-          containerStyle={{ marginLeft: "50px" }}
+          containerStyle={{ marginLeft: "10px" }}
           toastOptions={{
             success: {
               duration: 3 * 1000,

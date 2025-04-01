@@ -8,7 +8,7 @@ import {
 } from "react-icons/hi2";
 import useCartStore from "../../zustand/CartStore.js";
 
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 // import {
 //   decreaseItemQuantity,
 //   increaseItemQuantity,
@@ -32,7 +32,7 @@ export default function CartItem({ product }) {
   function handleDeleteItem() {
     // dispatch(removeItem(product.id));
     removeItem(product.id);
-    toast.success("Removed");
+    // toast.success("Removed");
   }
 
   return (

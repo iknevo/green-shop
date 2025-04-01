@@ -8,7 +8,7 @@ export default function useScrollToTop() {
     const searchParams = new URLSearchParams(search);
     const preventScroll = searchParams.get("preventScroll");
 
-    if (pathname !== window.lastPathname || !preventScroll) {
+    if (pathname !== window.lastPathname && !preventScroll) {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
