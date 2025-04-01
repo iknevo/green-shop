@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { getCart } from "../../redux/slices/cartSlice";
 import { Button, Loader } from "../../ui";
 import BreadCrumbs from "../../ui/BreadCrumbs";
+import useCartStore from "../../zustand/CartStore.js";
 import { useShopProducts } from "../shop/useShopProducts.js";
 import RelatedProducts from "./../shop/RelatedProducts.jsx";
 import CartList from "./CartList.jsx";
@@ -10,7 +11,8 @@ import CartTotal from "./CartTotal.jsx";
 
 export default function Cart() {
   const { shopProducts, isLoading: isLoadingProducts } = useShopProducts();
-  const cart = useSelector(getCart);
+  // const cart = useSelector(getCart);
+  const cart = useCartStore((state) => state.cart);
   const navigate = useNavigate();
   if (!cart.length)
     return (

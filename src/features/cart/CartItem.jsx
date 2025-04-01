@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { formatCurrency } from "../../utils/helpers";
 
 import {
@@ -6,26 +6,32 @@ import {
   HiMiniPlusCircle,
   HiOutlineTrash,
 } from "react-icons/hi2";
+import useCartStore from "../../zustand/CartStore.js";
 
 import toast from "react-hot-toast";
-import {
-  decreaseItemQuantity,
-  increaseItemQuantity,
-  removeItem,
-} from "../../redux/slices/cartSlice";
+// import {
+//   decreaseItemQuantity,
+//   increaseItemQuantity,
+//   removeItem,
+// } from "../../redux/slices/cartSlice";
 
 /* eslint-disable react/prop-types */
 export default function CartItem({ product }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const { increaseItemQuantity, decreaseItemQuantity, removeItem } =
+    useCartStore();
 
   function handleQuantityInc() {
-    dispatch(increaseItemQuantity(product.id));
+    // dispatch(increaseItemQuantity(product.id));
+    increaseItemQuantity(product.id);
   }
   function handleQuantityDec() {
-    dispatch(decreaseItemQuantity(product.id));
+    // dispatch(decreaseItemQuantity(product.id));
+    decreaseItemQuantity(product.id);
   }
   function handleDeleteItem() {
-    dispatch(removeItem(product.id));
+    // dispatch(removeItem(product.id));
+    removeItem(product.id);
     toast.success("Removed");
   }
 

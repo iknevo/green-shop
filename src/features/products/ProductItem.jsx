@@ -1,9 +1,10 @@
 import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { getQuantityById, removeItem } from "../../redux/slices/cartSlice";
+// import { getQuantityById, removeItem } from "../../redux/slices/cartSlice";
 import Button from "../../ui/buttons/Button";
 import { formatCurrency } from "../../utils/helpers";
+import useCartStore from "../../zustand/CartStore";
 import "./ProductItem.scss";
 /* eslint-disable react/prop-types */
 export default function ProductItem({ product }) {
@@ -12,13 +13,16 @@ export default function ProductItem({ product }) {
   const oldPrice = price + discount;
   const hasDiscount = discount > 0;
   const discountPercentage = Math.round((discount / oldPrice) * 100) + "%";
-  const dispatch = useDispatch();
-  const currentQuantity = useSelector(getQuantityById(product.id));
+  // const dispatch = useDispatch();
+  // const currentQuantity = useSelector(getQuantityById(product.id));
+  const { getQuantityById, removeItem } = useCartStore();
+  const currentQuantity = getQuantityById(product.id);
   const isInCart = currentQuantity > 0;
 
   function handleCart() {
     if (isInCart) {
-      dispatch(removeItem(product.id));
+      // dispatch(removeItem(product.id));
+      removeItem(product.id);
       toast.success("item deleted");
     } else if (!isInCart) {
       navigate(`/shop/${product.id}`);

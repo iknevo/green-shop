@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router";
-import { getTotalCartPrice } from "../../redux/slices/cartSlice";
+// import { getTotalCartPrice } from "../../redux/slices/cartSlice";
 import { Button } from "../../ui";
 import LoaderMini from "../../ui/LoaderMini";
 import { formatCurrency } from "../../utils/helpers";
+import useCartStore from "../../zustand/CartStore";
 import { useCoupon } from "./useCoupon";
 
 export default function CartTotal() {
-  const totalCartPrice = useSelector(getTotalCartPrice);
+  // const totalCartPrice = useSelector(getTotalCartPrice);
+  const totalCartPrice = useCartStore((state) => state.getTotalCartPrice)?.();
+  // console.log(totalCartPrice);
   const couponInputRef = useRef(null);
 
   const shippingCost = 30;

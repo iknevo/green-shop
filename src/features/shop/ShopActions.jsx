@@ -7,10 +7,11 @@ import {
   HiShoppingCart,
 } from "react-icons/hi2";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
-import { addItem, getQuantityById } from "../../redux/slices/cartSlice";
+// import { addItem, getQuantityById } from "../../redux/slices/cartSlice";
 import { Button } from "../../ui";
+import useCartStore from "../../zustand/CartStore";
 import SizeButton from "./SizeButton";
 
 export default function ShopActions({ product }) {
@@ -23,9 +24,11 @@ export default function ShopActions({ product }) {
         ? "S"
         : product.sizes.at(0),
   );
-  const currentQuantity = useSelector(getQuantityById(product.id));
+  // const currentQuantity = useSelector(getQuantityById(product.id));
+  const { getQuantityById, addItem } = useCartStore();
+  const currentQuantity = getQuantityById(product.id);
   const isInCart = currentQuantity > 0;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,7 +66,8 @@ export default function ShopActions({ product }) {
       inStock: product.inStock,
     };
     if (isInCart) return;
-    dispatch(addItem(newItem));
+    // dispatch(addItem(newItem));
+    addItem(newItem);
     toast.success("Added to cart");
   }
 
