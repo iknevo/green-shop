@@ -32,23 +32,31 @@ export async function signup({ full_name, email, password }) {
 }
 
 export async function googleLogin() {
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-  });
-  if (error) {
-    throw new Error(error.message);
-  }
-}
-
-export async function facebookLogin() {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "facebook",
+    provider: "google",
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+    },
   });
   if (error) {
     throw new Error(error.message);
   }
   return data;
 }
+
+export async function facebookLogin() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "facebook",
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+    },
+  });
+  if (error) {
+    throw new Error(error.message);
+  }
+  return data;
+}
+
 export async function getCurrentUser() {
   const { data: session } = await supabase.auth.getSession();
   if (!session.session) return null;

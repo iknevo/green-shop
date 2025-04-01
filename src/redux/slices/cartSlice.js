@@ -46,6 +46,7 @@ export const {
   setCart,
   addItem,
   removeItem,
+  clearCart,
   increaseItemQuantity,
   decreaseItemQuantity,
 } = cartSlice.actions;

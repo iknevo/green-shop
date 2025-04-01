@@ -5,6 +5,7 @@ import AccountPassword from "./features/account/AccountPassword.jsx";
 import AccountAddress from "./features/account/AccoutAddress.jsx";
 import Auth from "./features/authentication/Auth";
 import Login from "./features/authentication/Login";
+import OAuthCallback from "./features/authentication/OAuthCallback";
 import SignUp from "./features/authentication/SignUp";
 import Cart from "./features/cart/Cart";
 import { DefaultLayout } from "./layouts";
@@ -76,6 +77,10 @@ const myRouter = createBrowserRouter([
           { path: "address", element: <AccountAddress /> },
           { path: "password", element: <AccountPassword /> },
         ],
+      },
+      {
+        path: "auth/callback",
+        element: <OAuthCallback />,
       },
     ],
   },

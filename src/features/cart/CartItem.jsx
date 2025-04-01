@@ -6,6 +6,7 @@ import {
   HiMiniPlusCircle,
   HiOutlineTrash,
 } from "react-icons/hi2";
+
 import useCartStore from "../../zustand/CartStore.js";
 
 // import toast from "react-hot-toast";
