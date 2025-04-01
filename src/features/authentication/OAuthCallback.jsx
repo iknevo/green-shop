@@ -9,9 +9,7 @@ export default function OAuthCallback() {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    // Handle the OAuth callback
     const handleAuthCallback = async () => {
-      // Get the session from Supabase
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
@@ -21,7 +19,6 @@ export default function OAuthCallback() {
       }
 
       if (data?.session) {
-        // We have a session, get the user data
         const { data: userData, error: userError } =
           await supabase.auth.getUser();
 
@@ -32,14 +29,11 @@ export default function OAuthCallback() {
         }
 
         if (userData?.user) {
-          // Update the React Query cache with the user
           queryClient.setQueryData(["user"], userData.user);
 
-          // Navigate to the account page or home
           navigate("/home", { replace: true });
         }
       } else {
-        // No session found, go back to home
         navigate("/home", { replace: true });
       }
     };
@@ -47,7 +41,6 @@ export default function OAuthCallback() {
     handleAuthCallback();
   }, [navigate, queryClient]);
 
-  // Show a loader while processing
   return (
     <div className="flex h-dvh items-center justify-center bg-gray-50">
       <Loader />
